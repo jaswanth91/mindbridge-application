@@ -1,0 +1,1850 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+Tamil:wght@300;400;500;600&display=swap');
+:root {
+  --mb-indigo:#5B6DF6;--mb-violet:#7C3AED;--mb-lavender:#C4B5FD;
+  --mb-sky:#7DD3FC;--mb-mint:#6EE7B7;--mb-blush:#FBCFE8;
+  --mb-soft-bg:#F3F0FF;--mb-card:rgba(255,255,255,0.72);
+  --mb-shadow:0 4px 24px rgba(91,109,246,0.10);
+  --mb-radius:22px;--mb-radius-sm:14px;
+  --mb-font:'DM Sans',sans-serif;--mb-serif:'DM Serif Display',serif;
+  --mb-tamil:'Noto Sans Tamil','DM Sans',sans-serif;
+  --mb-text:#1E1B4B;--mb-muted:#6B6F9A;
+  --mb-dark-bg:#0F0C2A;--mb-dark-text:#E8E4FF;--mb-dark-muted:#9B96C9;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--mb-font);background:var(--color-background-tertiary);}
+.app-wrapper{max-width:420px;margin:0 auto;padding:12px 0 24px;}
+.phone{width:100%;max-width:380px;margin:0 auto 24px;border-radius:40px;overflow:hidden;position:relative;
+  box-shadow:0 20px 60px rgba(91,109,246,0.18),0 4px 16px rgba(0,0,0,0.12);
+  border:1.5px solid rgba(196,181,253,0.3);}
+.phone.dark{background:var(--mb-dark-bg);}
+.phone.light{background:var(--mb-soft-bg);}
+.phone-notch{width:100px;height:26px;background:#0F0C2A;border-radius:0 0 18px 18px;margin:0 auto;position:relative;z-index:10;}
+.phone.light .phone-notch{background:#1E1B4B;}
+.status-bar{display:flex;justify-content:space-between;align-items:center;padding:8px 20px 4px;font-size:11px;font-weight:500;color:rgba(255,255,255,0.7);}
+.phone.light .status-bar{color:rgba(30,27,75,0.6);}
+.screen{padding:0 0 80px;min-height:640px;position:relative;overflow:hidden;}
+
+.grad-onboard{background:linear-gradient(160deg,#0F0C2A 0%,#1E1254 40%,#2D1B69 70%,#1a0f4f 100%);}
+.grad-home-dark{background:linear-gradient(170deg,#0F0C2A 0%,#150E3A 50%,#1a1050 100%);}
+.grad-home-light{background:linear-gradient(170deg,#EEF0FF 0%,#F3F0FF 50%,#F8F5FF 100%);}
+.grad-chat{background:linear-gradient(170deg,#0D1B40 0%,#0F1A4A 60%,#0D1635 100%);}
+.grad-assess{background:linear-gradient(160deg,#0F0C2A 0%,#1a1254 60%,#160e40 100%);}
+.grad-meditate{background:linear-gradient(160deg,#050C1A 0%,#0A1628 50%,#0D1F3C 100%);}
+.grad-results{background:linear-gradient(160deg,#0F0C2A 0%,#1E1254 60%,#1a0f4f 100%);}
+.grad-crisis{background:linear-gradient(160deg,#1A0505 0%,#2D0F0F 50%,#1F0A0A 100%);}
+.grad-progress{background:linear-gradient(160deg,#080C20 0%,#0F1535 50%,#131A40 100%);}
+.grad-resources{background:linear-gradient(160deg,#0A0F28 0%,#131840 50%,#0F1535 100%);}
+.grad-notifs{background:linear-gradient(160deg,#0C0A22 0%,#16123A 50%,#110E30 100%);}
+.grad-modq{background:linear-gradient(160deg,#0A0E1E 0%,#111528 50%,#0D1020 100%);}
+.grad-faceid{background:linear-gradient(160deg,#030718 0%,#070D28 50%,#050A1E 100%);}
+
+.t-hero{font-family:var(--mb-serif);font-size:30px;line-height:1.2;color:#fff;font-weight:400;letter-spacing:-0.5px;}
+.t-title{font-size:20px;font-weight:600;color:#fff;letter-spacing:-0.3px;}
+.t-body{font-size:14px;font-weight:400;color:rgba(255,255,255,0.65);line-height:1.6;}
+.t-label{font-size:12px;font-weight:500;color:rgba(255,255,255,0.5);}
+.t-caption{font-size:11px;font-weight:400;color:rgba(255,255,255,0.4);}
+
+.glass-card{background:rgba(255,255,255,0.07);border:0.5px solid rgba(196,181,253,0.18);border-radius:var(--mb-radius);backdrop-filter:blur(16px);}
+.glass-card-light{background:rgba(255,255,255,0.82);border:0.5px solid rgba(124,58,237,0.12);border-radius:var(--mb-radius);box-shadow:0 4px 20px rgba(91,109,246,0.08);}
+
+.btn-primary{background:linear-gradient(135deg,#5B6DF6,#7C3AED);border:none;border-radius:50px;padding:14px 32px;color:#fff;font-family:var(--mb-font);font-size:15px;font-weight:500;cursor:pointer;display:inline-block;text-align:center;box-shadow:0 6px 20px rgba(91,109,246,0.4);transition:transform 0.15s,box-shadow 0.15s;}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 28px rgba(91,109,246,0.5);}
+.btn-primary:active{transform:scale(0.97);}
+.btn-ghost{background:rgba(255,255,255,0.08);border:0.5px solid rgba(255,255,255,0.2);border-radius:50px;padding:12px 28px;color:rgba(255,255,255,0.8);font-family:var(--mb-font);font-size:14px;font-weight:400;cursor:pointer;}
+.btn-crisis{background:linear-gradient(135deg,#EF4444,#DC2626);border:none;border-radius:50px;padding:16px 36px;color:#fff;font-family:var(--mb-font);font-size:16px;font-weight:600;cursor:pointer;width:100%;text-align:center;box-shadow:0 6px 24px rgba(239,68,68,0.5);}
+.btn-sm{padding:7px 14px;border-radius:10px;font-size:12px;font-weight:500;border:none;cursor:pointer;font-family:var(--mb-font);}
+.btn-approve{background:rgba(110,231,183,0.18);color:#6EE7B7;border:0.5px solid rgba(110,231,183,0.3);}
+.btn-reject{background:rgba(239,68,68,0.14);color:#FCA5A5;border:0.5px solid rgba(239,68,68,0.25);}
+.btn-escalate{background:rgba(251,191,36,0.14);color:#FCD34D;border:0.5px solid rgba(251,191,36,0.25);}
+
+.bottom-nav{position:absolute;bottom:0;left:0;right:0;background:rgba(15,12,42,0.96);border-top:0.5px solid rgba(196,181,253,0.15);backdrop-filter:blur(20px);display:flex;justify-content:space-around;align-items:center;padding:8px 0 16px;z-index:20;}
+.bottom-nav.light{background:rgba(243,240,255,0.97);border-top:0.5px solid rgba(124,58,237,0.1);}
+.nav-item{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:4px 6px;border-radius:12px;}
+.nav-item .nav-icon{font-size:16px;color:rgba(255,255,255,0.35);}
+.nav-item .nav-label{font-size:9px;color:rgba(255,255,255,0.35);font-weight:400;}
+.nav-item.active .nav-icon,.nav-item.active .nav-label{color:var(--mb-indigo);}
+.nav-item.active .nav-label{font-weight:500;}
+.bottom-nav.light .nav-item .nav-icon,.bottom-nav.light .nav-item .nav-label{color:rgba(30,27,75,0.35);}
+.bottom-nav.light .nav-item.active .nav-icon,.bottom-nav.light .nav-item.active .nav-label{color:var(--mb-indigo);}
+.fab{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#5B6DF6,#7C3AED);box-shadow:0 4px 16px rgba(91,109,246,0.5);display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer;margin-top:-20px;border:3px solid rgba(15,12,42,0.9);}
+
+.pill{display:inline-block;padding:4px 12px;border-radius:50px;font-size:11px;font-weight:500;}
+.pill-violet{background:rgba(124,58,237,0.2);color:#C4B5FD;}
+.pill-mint{background:rgba(110,231,183,0.15);color:#6EE7B7;}
+.pill-sky{background:rgba(125,211,252,0.15);color:#7DD3FC;}
+.pill-amber{background:rgba(251,191,36,0.18);color:#FCD34D;}
+.pill-red{background:rgba(239,68,68,0.15);color:#FCA5A5;}
+.pill-gray{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.5);}
+
+.px{padding-left:20px;padding-right:20px;}
+.pt{padding-top:20px;}
+.mb-8{margin-bottom:8px;}
+.mb-12{margin-bottom:12px;}
+.mb-16{margin-bottom:16px;}
+.mb-20{margin-bottom:20px;}
+.mb-24{margin-bottom:24px;}
+
+.progress-track{height:6px;background:rgba(255,255,255,0.1);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,#5B6DF6,#7C3AED);}
+
+.input-field{width:100%;background:rgba(255,255,255,0.07);border:0.5px solid rgba(196,181,253,0.2);border-radius:var(--mb-radius-sm);padding:12px 16px;color:#fff;font-family:var(--mb-font);font-size:14px;outline:none;}
+.input-field::placeholder{color:rgba(255,255,255,0.3);}
+
+.back-btn{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.08);border:0.5px solid rgba(255,255,255,0.12);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;color:rgba(255,255,255,0.7);flex-shrink:0;}
+.content-z{position:relative;z-index:1;}
+.wave-bg{position:absolute;top:0;left:0;right:0;pointer-events:none;z-index:0;}
+
+.tab{padding:7px 16px;border-radius:50px;font-size:12px;font-weight:400;color:rgba(255,255,255,0.45);background:transparent;border:0.5px solid rgba(196,181,253,0.12);cursor:pointer;transition:all 0.2s;}
+.tab.active{background:rgba(91,109,246,0.2);border-color:rgba(91,109,246,0.4);color:#C4B5FD;font-weight:500;}
+.slot-btn{padding:7px 13px;border-radius:10px;font-size:12px;font-weight:500;background:rgba(255,255,255,0.06);border:0.5px solid rgba(196,181,253,0.15);color:rgba(255,255,255,0.7);cursor:pointer;}
+.slot-btn.active{background:rgba(91,109,246,0.22);border-color:rgba(91,109,246,0.4);color:#C4B5FD;}
+
+.quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.quick-item{border-radius:var(--mb-radius-sm);padding:14px;display:flex;flex-direction:column;gap:8px;cursor:pointer;transition:transform 0.15s;}
+.quick-item:hover{transform:translateY(-2px);}
+.quick-icon{font-size:20px;}
+.quick-label{font-size:12px;font-weight:500;}
+.qi-1{background:rgba(91,109,246,0.15);border:0.5px solid rgba(91,109,246,0.2);}.qi-1 .quick-label{color:#A5B4FC;}
+.qi-2{background:rgba(110,231,183,0.12);border:0.5px solid rgba(110,231,183,0.2);}.qi-2 .quick-label{color:#6EE7B7;}
+.qi-3{background:rgba(251,207,232,0.12);border:0.5px solid rgba(251,207,232,0.2);}.qi-3 .quick-label{color:#F9A8D4;}
+.qi-4{background:rgba(125,211,252,0.12);border:0.5px solid rgba(125,211,252,0.2);}.qi-4 .quick-label{color:#7DD3FC;}
+
+.mood-row{display:flex;justify-content:space-between;padding:0 4px;}
+.mood-item{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;padding:6px 8px;border-radius:14px;transition:background 0.2s,transform 0.15s;}
+.mood-item.selected{background:rgba(91,109,246,0.18);border:0.5px solid rgba(91,109,246,0.35);transform:scale(1.08);}
+.mood-emoji{font-size:22px;}
+.mood-label{font-size:9px;color:rgba(255,255,255,0.5);}
+
+@keyframes breathe{0%,100%{transform:scale(1);opacity:0.6;}50%{transform:scale(1.18);opacity:1;}}
+@keyframes breathe2{0%,100%{transform:scale(1);opacity:0.3;}50%{transform:scale(1.28);opacity:0.6;}}
+@keyframes breathe3{0%,100%{transform:scale(1);opacity:0.15;}50%{transform:scale(1.4);opacity:0.35;}}
+@keyframes crisis-pulse{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,0.4);}50%{box-shadow:0 0 0 14px rgba(239,68,68,0);}}
+@keyframes scan-line{0%{top:20%;opacity:1;}50%{opacity:0.8;}100%{top:78%;opacity:0;}}
+@keyframes face-glow{0%,100%{box-shadow:0 0 0 0 rgba(110,231,183,0.4);}50%{box-shadow:0 0 30px 6px rgba(110,231,183,0.25);}}
+@keyframes face-detect-pulse{0%,100%{opacity:0.5;}50%{opacity:1;}}
+@keyframes slide-in-right{from{transform:translateX(30px);opacity:0;}to{transform:translateX(0);opacity:1;}}
+@keyframes notif-new{from{background:rgba(91,109,246,0.15);}to{background:rgba(255,255,255,0.04);}}
+@keyframes card-float{0%,100%{transform:translateY(0);}50%{transform:translateY(-4px);}}
+@keyframes lang-fade{0%{opacity:0;}100%{opacity:1;}}
+
+.breathe-container{display:flex;align-items:center;justify-content:center;height:180px;position:relative;}
+.breathe-ring{position:absolute;border-radius:50%;}
+.ring1{width:90px;height:90px;background:linear-gradient(135deg,rgba(91,109,246,0.7),rgba(124,58,237,0.5));animation:breathe 4s ease-in-out infinite;}
+.ring2{width:130px;height:130px;background:rgba(91,109,246,0.18);border:0.5px solid rgba(196,181,253,0.3);animation:breathe2 4s ease-in-out infinite;}
+.ring3{width:170px;height:170px;background:rgba(91,109,246,0.07);border:0.5px solid rgba(196,181,253,0.15);animation:breathe3 4s ease-in-out infinite;}
+.breathe-text{position:relative;z-index:2;text-align:center;color:#fff;font-size:13px;font-weight:500;}
+
+.chart-bar-wrap{display:flex;align-items:flex-end;gap:6px;height:70px;}
+.chart-bar{flex:1;border-radius:5px 5px 0 0;background:linear-gradient(180deg,#7C3AED,#5B6DF6);}
+.chart-bar.low{background:linear-gradient(180deg,#6EE7B7,#34D399);}
+.chart-bar.mid{background:linear-gradient(180deg,#FCD34D,#F59E0B);}
+.chart-bar.high{background:linear-gradient(180deg,#F87171,#EF4444);}
+.chart-day{font-size:9px;color:rgba(255,255,255,0.4);text-align:center;}
+
+.forum-post{background:rgba(255,255,255,0.05);border:0.5px solid rgba(196,181,253,0.12);border-radius:18px;padding:14px 16px;margin-bottom:10px;}
+.assess-option{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:var(--mb-radius-sm);margin-bottom:8px;background:rgba(255,255,255,0.05);border:0.5px solid rgba(196,181,253,0.12);cursor:pointer;transition:all 0.15s;}
+.assess-option.selected{background:rgba(91,109,246,0.18);border-color:rgba(91,109,246,0.4);}
+.radio-ring{width:18px;height:18px;border-radius:50%;flex-shrink:0;border:1.5px solid rgba(196,181,253,0.4);display:flex;align-items:center;justify-content:center;}
+.radio-dot{width:8px;height:8px;border-radius:50%;background:var(--mb-indigo);display:none;}
+.assess-option.selected .radio-dot{display:block;}
+.assess-option.selected .radio-ring{border-color:var(--mb-indigo);}
+
+.stat-pill{text-align:center;flex:1;padding:10px 6px;background:rgba(255,255,255,0.05);border-radius:var(--mb-radius-sm);border:0.5px solid rgba(196,181,253,0.1);}
+.settings-row{display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-bottom:0.5px solid rgba(255,255,255,0.06);}
+.settings-row:last-child{border-bottom:none;}
+.toggle{width:38px;height:21px;border-radius:11px;position:relative;background:var(--mb-indigo);cursor:pointer;flex-shrink:0;}
+.toggle::after{content:'';position:absolute;top:3px;right:3px;width:15px;height:15px;border-radius:50%;background:#fff;}
+.toggle.off{background:rgba(255,255,255,0.15);}
+.toggle.off::after{transform:translateX(-17px);}
+.anon-avatar{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;flex-shrink:0;}
+.score-ring-wrap{position:relative;width:100px;height:100px;}
+
+.crisis-pulse{animation:crisis-pulse 2s ease-in-out infinite;}
+
+.mode-toggle{display:flex;gap:0;border-radius:50px;overflow:hidden;border:0.5px solid var(--color-border-tertiary);width:fit-content;margin:0 auto 8px;}
+.mode-btn{padding:6px 18px;font-size:12px;font-weight:400;background:transparent;border:none;cursor:pointer;color:var(--color-text-secondary);font-family:var(--mb-font);transition:all 0.2s;}
+.mode-btn.active{background:var(--color-background-secondary);color:var(--color-text-primary);font-weight:500;}
+.screen-tabs{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin-bottom:12px;}
+.screen-btn{padding:4px 10px;border-radius:50px;font-size:10px;font-weight:400;background:transparent;border:0.5px solid var(--color-border-tertiary);cursor:pointer;color:var(--color-text-secondary);font-family:var(--mb-font);transition:all 0.2s;white-space:nowrap;}
+.screen-btn.active{background:var(--color-background-secondary);color:var(--color-text-primary);font-weight:500;border-color:var(--color-border-secondary);}
+
+.lang-toggle{display:flex;border-radius:20px;overflow:hidden;border:0.5px solid rgba(196,181,253,0.25);background:rgba(255,255,255,0.06);}
+.lang-btn{padding:4px 12px;font-size:11px;font-weight:500;background:transparent;border:none;cursor:pointer;color:rgba(255,255,255,0.45);font-family:var(--mb-font);transition:all 0.2s;}
+.lang-btn.active{background:rgba(91,109,246,0.3);color:#C4B5FD;}
+
+.notif-item{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border-radius:16px;margin-bottom:8px;cursor:pointer;transition:all 0.2s;border:0.5px solid transparent;}
+.notif-item.unread{background:rgba(91,109,246,0.1);border-color:rgba(91,109,246,0.2);animation:notif-new 2s ease forwards;}
+.notif-item.read{background:rgba(255,255,255,0.03);border-color:rgba(255,255,255,0.06);}
+.notif-dot{width:7px;height:7px;border-radius:50%;background:var(--mb-indigo);flex-shrink:0;margin-top:4px;}
+.notif-dot.read{background:transparent;}
+
+.res-card{background:rgba(255,255,255,0.05);border:0.5px solid rgba(196,181,253,0.12);border-radius:18px;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;cursor:pointer;animation:card-float 4s ease-in-out infinite;}
+.res-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(91,109,246,0.2);}
+.res-card:nth-child(2){animation-delay:0.5s;}
+.res-card:nth-child(3){animation-delay:1s;}
+.res-thumb{height:80px;display:flex;align-items:center;justify-content:center;font-size:32px;position:relative;}
+.res-body{padding:10px 12px;}
+
+.face-frame{position:relative;width:200px;height:240px;margin:0 auto;}
+.face-oval{width:200px;height:240px;border:2px solid rgba(110,231,183,0.8);border-radius:50%;position:absolute;top:0;left:0;animation:face-glow 2s ease-in-out infinite;}
+.face-scan-line{position:absolute;left:10%;right:10%;height:2px;background:linear-gradient(90deg,transparent,rgba(110,231,183,0.9),transparent);animation:scan-line 2s ease-in-out infinite;}
+.face-corner{position:absolute;width:20px;height:20px;border-color:rgba(110,231,183,1);border-style:solid;}
+.fc-tl{top:-1px;left:-1px;border-width:3px 0 0 3px;border-radius:4px 0 0 0;}
+.fc-tr{top:-1px;right:-1px;border-width:3px 3px 0 0;border-radius:0 4px 0 0;}
+.fc-bl{bottom:-1px;left:-1px;border-width:0 0 3px 3px;border-radius:0 0 0 4px;}
+.fc-br{bottom:-1px;right:-1px;border-width:0 3px 3px 0;border-radius:0 0 4px 0;}
+.face-dot{width:8px;height:8px;border-radius:50%;position:absolute;background:rgba(110,231,183,0.8);animation:face-detect-pulse 1.5s ease-in-out infinite;}
+
+.modq-item{background:rgba(255,255,255,0.04);border:0.5px solid rgba(196,181,253,0.1);border-radius:16px;padding:14px;margin-bottom:10px;transition:all 0.2s;}
+.modq-item.urgent{border-color:rgba(239,68,68,0.3);background:rgba(239,68,68,0.05);}
+.modq-item.medium{border-color:rgba(251,191,36,0.25);background:rgba(251,191,36,0.04);}
+
+.progress-mini-card{background:rgba(255,255,255,0.05);border:0.5px solid rgba(196,181,253,0.12);border-radius:18px;padding:14px;margin-bottom:10px;transition:transform 0.2s;cursor:pointer;}
+.progress-mini-card:hover{transform:translateY(-2px);}
+
+.streak-badge{display:flex;align-items:center;gap:6px;padding:8px 12px;border-radius:50px;background:linear-gradient(135deg,rgba(252,211,77,0.18),rgba(245,158,11,0.1));border:0.5px solid rgba(252,211,77,0.3);}
+
+.bubble-ai{background:rgba(91,109,246,0.12);border:0.5px solid rgba(91,109,246,0.2);border-radius:18px 18px 18px 4px;padding:11px 14px;max-width:80%;color:rgba(255,255,255,0.88);font-size:13px;line-height:1.5;}
+.bubble-user{background:linear-gradient(135deg,#5B6DF6,#7C3AED);border-radius:18px 18px 4px 18px;padding:11px 14px;max-width:80%;margin-left:auto;color:#fff;font-size:13px;line-height:1.5;}
+.bubble-row{display:flex;margin-bottom:10px;}
+.bubble-row.right{justify-content:flex-end;}
+.ai-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#5B6DF6,#7C3AED);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;margin-right:7px;align-self:flex-end;}
+
+.counsellor-avatar{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.toggle-lang-float{position:absolute;top:12px;right:20px;z-index:30;}
+
+.tamil-mode .t-hero,.tamil-mode .t-title,.tamil-mode .t-body,.tamil-mode .t-label,.tamil-mode .t-caption,
+.tamil-mode div,.tamil-mode span,.tamil-mode button,.tamil-mode input{font-family:var(--mb-tamil) !important;}
+.lang-text{transition:opacity 0.25s ease;}
+.lang-fade{animation:lang-fade 0.3s ease;}
+
+/* ── NEW NAVIGATION ADDITIONS ── */
+
+/* Quick action extended items (counsellor + community) */
+.qi-5{background:rgba(110,183,246,0.12);border:0.5px solid rgba(110,183,246,0.22);}.qi-5 .quick-label{color:#93C5FD;}
+.qi-6{background:rgba(196,181,253,0.12);border:0.5px solid rgba(196,181,253,0.22);}.qi-6 .quick-label{color:#C4B5FD;}
+
+/* Community bottom-nav indicator dot — differentiates from Chat */
+.nav-community-dot{position:absolute;top:-2px;right:-3px;width:6px;height:6px;border-radius:50%;background:rgba(196,181,253,0.8);}
+
+/* Moderator-only panel inside Profile */
+.mod-panel{background:rgba(251,191,36,0.06);border:0.5px solid rgba(251,191,36,0.18);border-radius:14px;padding:10px 12px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:background 0.2s,border-color 0.2s;}
+.mod-panel:hover{background:rgba(251,191,36,0.1);border-color:rgba(251,191,36,0.3);}
+.mod-panel:active{transform:scale(0.98);}
+.mod-badge{background:rgba(251,191,36,0.15);border:0.5px solid rgba(251,191,36,0.3);border-radius:50px;padding:3px 8px;font-size:10px;font-weight:500;color:#FCD34D;}
+
+/* Micro-interaction: nav item ripple on tap */
+@keyframes nav-tap{0%{transform:scale(1);}40%{transform:scale(0.88);}100%{transform:scale(1);}}
+.nav-item:active{animation:nav-tap 0.18s ease;}
+
+/* Smooth screen transition overlay */
+@keyframes screen-slide-in{from{opacity:0;transform:translateX(14px);}to{opacity:1;transform:translateX(0);}}
+.screen-enter{animation:screen-slide-in 0.22s ease;}
+
+/* Community nav icon wrapper for relative positioning */
+.nav-icon-wrap{position:relative;display:inline-block;line-height:1;}
+
+/* ══ NEW ADDITIONS v3 ══ */
+
+/* ── Onboarding User Details (multi-step form) ── */
+@keyframes step-in{from{opacity:0;transform:translateX(20px);}to{opacity:1;transform:translateX(0);}}
+@keyframes step-out{from{opacity:1;transform:translateX(0);}to{opacity:0;transform:translateX(-20px);}}
+.step-panel{animation:step-in 0.28s ease;}
+.onb-step-dots{display:flex;gap:6px;justify-content:center;margin-bottom:18px;}
+.onb-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.15);transition:all 0.25s;}
+.onb-dot.active{width:22px;border-radius:4px;background:var(--mb-indigo);}
+.onb-dot.done{background:rgba(110,231,183,0.6);}
+.onb-label{font-size:11px;font-weight:500;color:rgba(196,181,253,0.65);margin-bottom:5px;display:block;}
+.onb-input{width:100%;background:rgba(255,255,255,0.07);border:0.5px solid rgba(196,181,253,0.2);border-radius:var(--mb-radius-sm);padding:11px 14px;color:#fff;font-family:var(--mb-font);font-size:13px;outline:none;transition:border-color 0.2s,box-shadow 0.2s;margin-bottom:10px;}
+.onb-input:focus{border-color:rgba(91,109,246,0.55);box-shadow:0 0 0 3px rgba(91,109,246,0.12);}
+.onb-input::placeholder{color:rgba(255,255,255,0.25);}
+.onb-input.error{border-color:rgba(239,68,68,0.6);}
+.onb-error{font-size:10px;color:#FCA5A5;margin-top:-7px;margin-bottom:8px;display:none;}
+.onb-error.show{display:block;}
+.gender-row{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px;}
+.gender-chip{padding:7px 13px;border-radius:50px;font-size:12px;font-weight:400;color:rgba(255,255,255,0.6);background:rgba(255,255,255,0.06);border:0.5px solid rgba(196,181,253,0.15);cursor:pointer;transition:all 0.18s;}
+.gender-chip.selected{background:rgba(91,109,246,0.22);border-color:rgba(91,109,246,0.45);color:#C4B5FD;}
+.lang-choice-row{display:flex;gap:8px;margin-bottom:10px;}
+.lang-choice{flex:1;padding:10px;border-radius:12px;border:0.5px solid rgba(196,181,253,0.15);background:rgba(255,255,255,0.05);font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);cursor:pointer;text-align:center;transition:all 0.18s;}
+.lang-choice.selected{background:rgba(91,109,246,0.2);border-color:rgba(91,109,246,0.4);color:#C4B5FD;}
+.btn-skip{background:none;border:none;color:rgba(255,255,255,0.3);font-family:var(--mb-font);font-size:12px;cursor:pointer;margin-top:6px;display:block;width:100%;text-align:center;padding:4px;}
+.btn-skip:hover{color:rgba(255,255,255,0.5);}
+
+/* ── Edit Profile ── */
+@keyframes save-bounce{0%{transform:scale(1);}40%{transform:scale(0.92);}70%{transform:scale(1.06);}100%{transform:scale(1);}}
+@keyframes check-pop{0%{opacity:0;transform:scale(0.5);}60%{transform:scale(1.15);}100%{opacity:1;transform:scale(1);}}
+.edit-avatar-ring{position:relative;display:inline-block;}
+.edit-avatar-badge{position:absolute;bottom:0;right:0;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#5B6DF6,#7C3AED);display:flex;align-items:center;justify-content:center;font-size:11px;border:2px solid #0F0C2A;cursor:pointer;}
+.save-confirm{display:none;align-items:center;gap:6px;font-size:12px;color:#6EE7B7;justify-content:center;margin-top:4px;}
+.save-confirm.show{display:flex;animation:check-pop 0.35s ease;}
+
+/* ── Quote modal (love button) ── */
+@keyframes quote-fade-in{from{opacity:0;transform:scale(0.9) translateY(10px);}to{opacity:1;transform:scale(1) translateY(0);}}
+@keyframes quote-fade-out{from{opacity:1;transform:scale(1);}to{opacity:0;transform:scale(0.94);}}
+.quote-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.55);backdrop-filter:blur(6px);z-index:9000;display:flex;align-items:flex-end;justify-content:center;padding-bottom:90px;opacity:0;pointer-events:none;transition:opacity 0.25s;}
+.quote-overlay.open{opacity:1;pointer-events:all;}
+.quote-card{background:linear-gradient(160deg,#1a1254 0%,#0F0C2A 100%);border:0.5px solid rgba(196,181,253,0.25);border-radius:28px;padding:22px 20px 18px;max-width:340px;width:100%;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.5);}
+.quote-card.animating{animation:quote-fade-in 0.32s cubic-bezier(0.34,1.56,0.64,1) forwards;}
+.quote-emoji{font-size:28px;margin-bottom:10px;display:block;text-align:center;}
+.quote-text{font-family:'DM Serif Display',serif;font-size:18px;color:#fff;line-height:1.45;text-align:center;margin-bottom:14px;}
+.quote-actions{display:flex;gap:8px;}
+.quote-btn{flex:1;padding:9px;border-radius:12px;font-size:12px;font-weight:500;border:0.5px solid rgba(196,181,253,0.2);background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.7);cursor:pointer;font-family:var(--mb-font);transition:all 0.18s;}
+.quote-btn:hover{background:rgba(255,255,255,0.12);}
+.quote-btn.save{background:rgba(91,109,246,0.22);border-color:rgba(91,109,246,0.4);color:#C4B5FD;}
+.quote-close{position:absolute;top:12px;right:14px;background:none;border:none;font-size:18px;color:rgba(255,255,255,0.35);cursor:pointer;line-height:1;}
+.quote-save-flash{position:absolute;bottom:60px;left:50%;transform:translateX(-50%);background:rgba(110,231,183,0.18);border:0.5px solid rgba(110,231,183,0.3);border-radius:50px;padding:5px 14px;font-size:11px;color:#6EE7B7;white-space:nowrap;opacity:0;transition:opacity 0.3s;pointer-events:none;}
+.quote-save-flash.show{opacity:1;}
+
+/* ── Emergency Quick Help button ── */
+.emergency-fab{position:absolute;bottom:88px;right:16px;z-index:30;width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#EF4444,#DC2626);box-shadow:0 4px 16px rgba(239,68,68,0.5);display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer;border:2px solid rgba(239,68,68,0.3);}
+@keyframes emergency-ring{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,0.5),0 4px 16px rgba(239,68,68,0.4);}50%{box-shadow:0 0 0 8px rgba(239,68,68,0),0 4px 16px rgba(239,68,68,0.4);}}
+.emergency-fab{animation:emergency-ring 2.5s ease-in-out infinite;}
+
+/* ── Streak system ── */
+.streak-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.streak-fire{font-size:22px;margin-right:4px;}
+.streak-days{display:flex;gap:4px;}
+.streak-day{width:28px;height:28px;border-radius:8px;background:rgba(255,255,255,0.06);border:0.5px solid rgba(196,181,253,0.1);display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(255,255,255,0.35);}
+.streak-day.done{background:linear-gradient(135deg,rgba(252,211,77,0.22),rgba(245,158,11,0.12));border-color:rgba(252,211,77,0.3);color:#FCD34D;}
+.streak-day.today{background:linear-gradient(135deg,rgba(91,109,246,0.3),rgba(124,58,237,0.2));border-color:rgba(91,109,246,0.5);color:#C4B5FD;font-weight:600;}
+
+/* ── Daily mood reminder banner ── */
+.mood-reminder{display:flex;align-items:center;gap:9px;padding:9px 12px;border-radius:14px;background:linear-gradient(135deg,rgba(252,211,77,0.1),rgba(245,158,11,0.06));border:0.5px solid rgba(252,211,77,0.2);margin-bottom:10px;cursor:pointer;}
+.mood-reminder-icon{font-size:16px;}
+.mood-reminder-text{flex:1;font-size:11px;color:rgba(252,211,77,0.8);line-height:1.4;}
+.mood-reminder-close{background:none;border:none;font-size:14px;color:rgba(255,255,255,0.25);cursor:pointer;padding:0;}
+
+/* ── Assessments screen ── */
+.assess-hub-card{background:rgba(255,255,255,0.05);border:0.5px solid rgba(196,181,253,0.12);border-radius:20px;padding:14px;margin-bottom:10px;cursor:pointer;transition:all 0.18s;display:flex;align-items:center;gap:12px;}
+.assess-hub-card:hover{background:rgba(255,255,255,0.08);transform:translateY(-1px);}
+.assess-hub-icon{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.assess-tag{padding:3px 9px;border-radius:50px;font-size:10px;font-weight:500;}
+.assess-tag.new{background:rgba(110,231,183,0.15);color:#6EE7B7;border:0.5px solid rgba(110,231,183,0.25);}
+.assess-tag.done{background:rgba(91,109,246,0.15);color:#A5B4FC;border:0.5px solid rgba(91,109,246,0.25);}
+
+/* ── AI mood recommendation card on home ── */
+.ai-reco-card{background:linear-gradient(135deg,rgba(91,109,246,0.12),rgba(124,58,237,0.08));border:0.5px solid rgba(91,109,246,0.2);border-radius:18px;padding:13px 14px;display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;}
+.ai-reco-badge{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#5B6DF6,#7C3AED);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+
+/* Input focus animation */
+@keyframes input-glow{from{box-shadow:0 0 0 0 rgba(91,109,246,0.4);}to{box-shadow:0 0 0 3px rgba(91,109,246,0.12);}}
+.onb-input:focus{animation:input-glow 0.3s ease forwards;}
+
+/* Back button light-mode */
+.phone.light .back-btn{background:rgba(91,109,246,0.08);color:var(--mb-indigo);}
+
+/* Assessments in bottom nav — active state */
+.nav-item.assess-nav .nav-icon{font-size:15px;}
+</style>
+
+<h2 class="sr-only">MindBridge v2 — expanded interactive UI with 16 screens including face verification, progress dashboard, resource hub, notifications, moderation queue, and language toggle</h2>
+
+<div class="app-wrapper">
+  <div style="text-align:center;margin-bottom:8px;">
+    <div class="mode-toggle">
+      <button class="mode-btn active" id="btn-dark" onclick="setMode('dark')">Dark</button>
+      <button class="mode-btn" id="btn-light" onclick="setMode('light')">Light</button>
+    </div>
+  </div>
+
+  <div class="screen-tabs" id="screen-tabs">
+    <button class="screen-btn active" onclick="setScreen('onboard')">Onboarding</button>
+    <button class="screen-btn" onclick="setScreen('userdetails')" style="border-color:rgba(196,181,253,0.4);color:#C4B5FD;">User Details ✨</button>
+    <button class="screen-btn" onclick="setScreen('login')">Login</button>
+    <button class="screen-btn" onclick="setScreen('editprofile')" style="border-color:rgba(110,231,183,0.4);color:#6EE7B7;">Edit Profile ✨</button>
+    <button class="screen-btn" onclick="setScreen('assesshub')" style="border-color:rgba(125,211,252,0.4);color:#7DD3FC;">Assess Hub ✨</button>
+    <button class="screen-btn" onclick="setScreen('home')">Home</button>
+    <button class="screen-btn" onclick="setScreen('chat')">AI Chat</button>
+    <button class="screen-btn" onclick="setScreen('assess')">Assessment</button>
+    <button class="screen-btn" onclick="setScreen('results')">Results</button>
+    <button class="screen-btn" onclick="setScreen('booking')">Counsellor</button>
+    <button class="screen-btn" onclick="setScreen('meditate')">Meditate</button>
+    <button class="screen-btn" onclick="setScreen('forum')">Forum</button>
+    <button class="screen-btn" onclick="setScreen('crisis')">Crisis</button>
+    <button class="screen-btn" onclick="setScreen('profile')">Profile</button>
+    <button class="screen-btn" onclick="setScreen('faceid')" style="border-color:rgba(110,231,183,0.4);color:#6EE7B7;">Face ID</button>
+    <button class="screen-btn" onclick="setScreen('progress')" style="border-color:rgba(91,109,246,0.4);color:#A5B4FC;">Progress</button>
+    <button class="screen-btn" onclick="setScreen('resources')" style="border-color:rgba(125,211,252,0.4);color:#7DD3FC;">Resources</button>
+    <button class="screen-btn" onclick="setScreen('notifs')" style="border-color:rgba(196,181,253,0.4);color:#C4B5FD;">Notifications</button>
+    <button class="screen-btn" onclick="setScreen('modq')" style="border-color:rgba(251,191,36,0.4);color:#FCD34D;">Mod Queue</button>
+  </div>
+
+  <div class="phone dark" id="phone">
+    <div class="phone-notch"></div>
+    <div class="status-bar" id="status-bar">
+      <span id="sb-time">9:41</span>
+      <span style="font-size:9px;">● ● ●</span>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div class="lang-toggle" id="global-lang-toggle">
+          <button class="lang-btn active" id="gl-en" onclick="setLang('en')">EN</button>
+          <button class="lang-btn" id="gl-ta" onclick="setLang('ta')">தமிழ்</button>
+        </div>
+        <span>100%</span>
+      </div>
+    </div>
+
+    <div id="screens">
+
+      <!-- ══════════════ ONBOARDING ══════════════ -->
+      <div id="s-onboard" class="screen grad-onboard content-z" style="display:block;">
+        <svg class="wave-bg" viewBox="0 0 380 300" xmlns="http://www.w3.org/2000/svg" style="height:320px;">
+          <defs><radialGradient id="glow1" cx="50%" cy="30%" r="60%"><stop offset="0%" stop-color="#5B6DF6" stop-opacity="0.25"/><stop offset="100%" stop-color="#0F0C2A" stop-opacity="0"/></radialGradient></defs>
+          <ellipse cx="190" cy="80" rx="200" ry="120" fill="url(#glow1)"/>
+          <circle cx="60" cy="40" r="3" fill="rgba(196,181,253,0.5)"/><circle cx="300" cy="60" r="2" fill="rgba(125,211,252,0.5)"/>
+          <circle cx="180" cy="30" r="1.5" fill="rgba(110,231,183,0.5)"/><circle cx="330" cy="160" r="2" fill="rgba(196,181,253,0.4)"/>
+        </svg>
+        <div class="px pt" style="padding-top:130px;text-align:center;">
+          <div style="margin:0 auto 18px;width:68px;height:68px;border-radius:22px;background:linear-gradient(135deg,#5B6DF6,#7C3AED);display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 8px 28px rgba(91,109,246,0.45);">🧠</div>
+          <div style="font-family:'DM Serif Display',serif;font-size:30px;color:#fff;line-height:1.2;margin-bottom:6px;" class="lang-text" data-en="MindBridge" data-ta="மனசேது">MindBridge</div>
+          <div style="font-size:13px;color:rgba(196,181,253,0.7);margin-bottom:28px;" class="lang-text" data-en="Your calm space to breathe &amp; grow" data-ta="உங்கள் அமைதியான இடம்">Your calm space to breathe &amp; grow</div>
+          <div class="glass-card" style="padding:16px;margin-bottom:18px;text-align:left;">
+            <div style="font-size:11px;font-weight:500;color:rgba(196,181,253,0.6);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;" class="lang-text" data-en="Did you know?" data-ta="தெரியுமா?">Did you know?</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.75);line-height:1.6;" class="lang-text" data-en="1 in 4 students experiences anxiety during their degree. You're not alone." data-ta="4 மாணவர்களில் 1 பேர் கவலையால் பாதிக்கப்படுகிறார். நீங்கள் தனியல்ல.">1 in 4 students experiences anxiety during their degree. You're not alone.</div>
+          </div>
+          <button class="btn-primary" style="width:100%;margin-bottom:10px;" onclick="setScreen('userdetails')"><span class="lang-text" data-en="Get Started →" data-ta="தொடங்கு →">Get Started →</span></button>
+          <button class="btn-ghost" style="width:100%;" onclick="setScreen('login')"><span class="lang-text" data-en="I've been here before" data-ta="முன்பு வந்தேன்">I've been here before</span></button>
+          <div style="margin-top:14px;font-size:11px;color:rgba(255,255,255,0.25);" class="lang-text" data-en="Your data stays anonymous &amp; secure" data-ta="உங்கள் தரவு பாதுகாப்பானது">Your data stays anonymous &amp; secure</div>
+        </div>
+        <div class="bottom-nav">
+          <div class="nav-item active"><span class="nav-icon">🏠</span><span class="nav-label lang-text" data-en="Home" data-ta="முகப்பு">Home</span></div>
+          <div class="nav-item" onclick="setScreen('chat')"><span class="nav-icon">💬</span><span class="nav-label lang-text" data-en="Chat" data-ta="அரட்டை">Chat</span></div>
+          <div class="nav-item"><div class="fab" onclick="openQuote()">🤍</div></div>
+          <div class="nav-item" onclick="setScreen('assesshub')"><span class="nav-icon">📋</span><span class="nav-label lang-text" data-en="Assess" data-ta="மதிப்பீடு">Assess</span></div>
+          <div class="nav-item" onclick="setScreen('profile')"><span class="nav-icon">👤</span><span class="nav-label lang-text" data-en="Profile" data-ta="சுயவிவரம்">Profile</span></div>
+        </div>
+      </div>
+
+      <!-- ══════════════ LOGIN ══════════════ -->
+      <div id="s-login" class="screen grad-onboard" style="display:none;">
+        <div class="px content-z" style="padding-top:16px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;">
+            <button class="back-btn" onclick="setScreen('onboard')">←</button>
+          </div>
+          <div style="text-align:center;margin-bottom:28px;">
+            <div style="font-size:26px;margin-bottom:6px;">👋</div>
+            <div class="t-title lang-text" data-en="Welcome back" data-ta="மீண்டும் வரவேற்கிறோம்">Welcome back</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.5);margin-top:4px;" class="lang-text" data-en="Sign in to your safe space" data-ta="உங்கள் பாதுகாப்பான இடத்திற்கு உள்நுழையுங்கள்">Sign in to your safe space</div>
+          </div>
+          <div style="font-size:12px;font-weight:500;color:rgba(255,255,255,0.6);margin-bottom:6px;" class="lang-text" data-en="College Email" data-ta="கல்லூரி மின்னஞ்சல்">College Email</div>
+          <input class="input-field" placeholder="you@college.edu" type="email" style="margin-bottom:12px;"/>
+          <div style="font-size:12px;font-weight:500;color:rgba(255,255,255,0.6);margin-bottom:6px;" class="lang-text" data-en="Password" data-ta="கடவுச்சொல்">Password</div>
+          <input class="input-field" placeholder="••••••••" type="password" style="margin-bottom:16px;"/>
+          <button class="btn-primary" style="width:100%;margin-bottom:10px;" onclick="setScreen('home')"><span class="lang-text" data-en="Sign In" data-ta="உள்நுழை">Sign In</span></button>
+          <button class="btn-ghost" style="width:100%;margin-bottom:10px;" onclick="setScreen('userdetails')"><span class="lang-text" data-en="New here? Create Account" data-ta="புதியவரா? கணக்கு உருவாக்கு">New here? Create Account</span></button>
+          <button class="btn-ghost" style="width:100%;margin-bottom:14px;"><span class="lang-text" data-en="Continue with Google 🎓" data-ta="Google மூலம் தொடர் 🎓">Continue with Google 🎓</span></button>
+          <button class="btn-primary" style="width:100%;background:linear-gradient(135deg,#0A1628,#131F45);box-shadow:none;border:0.5px solid rgba(110,231,183,0.3);opacity:0.5;cursor:default;" disabled>
+            <span style="font-size:14px;">👁</span> <span class="lang-text" data-en="Counsellor? Verify with Face ID" data-ta="ஆலோசகரா? முக சரிபார்ப்பு">Counsellor? Verify with Face ID</span>
+          </button>
+          <div style="margin-top:14px;text-align:center;font-size:11px;color:rgba(110,231,183,0.6);">🔒 <span class="lang-text" data-en="Anonymous mode available" data-ta="அநாமதேய பயன்முறை உள்ளது">Anonymous mode available</span></div>
+        </div>
+        <div class="bottom-nav">
+          <div class="nav-item active"><span class="nav-icon">🏠</span><span class="nav-label lang-text" data-en="Home" data-ta="முகப்பு">Home</span></div>
+          <div class="nav-item"><span class="nav-icon">💬</span><span class="nav-label lang-text" data-en="Chat" data-ta="அரட்டை">Chat</span></div>
+          <div class="nav-item"><div class="fab" onclick="openQuote()">🤍</div></div>
+          <div class="nav-item" onclick="setScreen('assesshub')"><span class="nav-icon">📋</span><span class="nav-label lang-text" data-en="Assess" data-ta="மதிப்பீடு">Assess</span></div>
+          <div class="nav-item"><span class="nav-icon">👤</span><span class="nav-label lang-text" data-en="Profile" data-ta="சுயவிவரம்">Profile</span></div>
+        </div>
+      </div>
+
+      <!-- ══════════════ HOME ══════════════ -->
+      <div id="s-home" class="screen grad-home-dark" style="display:none;">
+        <div class="px content-z" style="padding-top:14px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;">
+            <div>
+              <div style="font-size:12px;color:rgba(196,181,253,0.6);margin-bottom:2px;" class="lang-text" data-en="Good morning ✨" data-ta="காலை வணக்கம் ✨">Good morning ✨</div>
+              <div class="t-title lang-text" data-en="Priya" data-ta="பிரியா">Priya</div>
+            </div>
+            <div style="display:flex;gap:8px;align-items:center;">
+              <div style="position:relative;cursor:pointer;" onclick="setScreen('notifs')">
+                <span style="font-size:22px;">🔔</span>
+                <span style="position:absolute;top:-2px;right:-2px;width:8px;height:8px;border-radius:50%;background:#EF4444;border:1.5px solid #0F0C2A;"></span>
+              </div>
+              <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#5B6DF6,#7C3AED);display:flex;align-items:center;justify-content:center;font-size:16px;">🌸</div>
+            </div>
+          </div>
+          <div class="glass-card" style="padding:14px;margin-bottom:12px;">
+            <div style="font-size:12px;font-weight:500;color:rgba(255,255,255,0.8);margin-bottom:10px;" class="lang-text" data-en="How are you feeling today?" data-ta="இன்று உங்கள் மனநிலை எப்படி?">How are you feeling today?</div>
+            <div class="mood-row">
+              <div class="mood-item selected" onclick="selectMood(this)"><span class="mood-emoji">😌</span><span class="mood-label lang-text" data-en="Calm" data-ta="அமைதி">Calm</span></div>
+              <div class="mood-item" onclick="selectMood(this)"><span class="mood-emoji">😊</span><span class="mood-label lang-text" data-en="Happy" data-ta="மகிழ்ச்சி">Happy</span></div>
+              <div class="mood-item" onclick="selectMood(this)"><span class="mood-emoji">😔</span><span class="mood-label lang-text" data-en="Sad" data-ta="சோகம்">Sad</span></div>
+              <div class="mood-item" onclick="selectMood(this)"><span class="mood-emoji">😰</span><span class="mood-label lang-text" data-en="Anxious" data-ta="கவலை">Anxious</span></div>
+              <div class="mood-item" onclick="selectMood(this)"><span class="mood-emoji">😤</span><span class="mood-label lang-text" data-en="Stressed" data-ta="மன அழுத்தம்">Stressed</span></div>
+            </div>
+          </div>
+          <div class="glass-card" style="padding:14px;margin-bottom:12px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+              <div>
+                <div style="font-size:11px;color:rgba(196,181,253,0.6);margin-bottom:2px;" class="lang-text" data-en="Wellness Score" data-ta="நலன் மதிப்பெண்">Wellness Score</div>
+                <div style="font-size:24px;font-weight:600;color:#fff;">72 <span style="font-size:12px;color:#6EE7B7;">↑4</span></div>
+              </div>
+              <button class="btn-ghost" style="padding:7px 14px;font-size:12px;" onclick="setScreen('progress')"><span class="lang-text" data-en="View Trends" data-ta="போக்கு காண்">View Trends</span></button>
+            </div>
+            <div class="progress-track"><div class="progress-fill" style="width:72%;"></div></div>
+          </div>
+          <div style="font-size:12px;font-weight:500;color:rgba(255,255,255,0.6);margin-bottom:8px;" class="lang-text" data-en="Quick Actions" data-ta="விரைவு செயல்கள்">Quick Actions</div>
+          <div class="quick-grid" style="margin-bottom:12px;">
+            <div class="quick-item qi-1" onclick="setScreen('chat')"><span class="quick-icon">💬</span><span class="quick-label lang-text" data-en="Talk to AI" data-ta="AI உடன் பேசு">Talk to AI</span></div>
+            <div class="quick-item qi-2" onclick="setScreen('meditate')"><span class="quick-icon">🫧</span><span class="quick-label lang-text" data-en="Breathe" data-ta="சுவாசி">Breathe</span></div>
+            <div class="quick-item qi-3" onclick="setScreen('progress')"><span class="quick-icon">📈</span><span class="quick-label lang-text" data-en="My Progress" data-ta="என் முன்னேற்றம்">My Progress</span></div>
+            <div class="quick-item qi-4" onclick="setScreen('resources')"><span class="quick-icon">📚</span><span class="quick-label lang-text" data-en="Resources" data-ta="வளங்கள்">Resources</span></div>
+            <div class="quick-item qi-5" onclick="setScreen('booking')"><span class="quick-icon">🧑‍⚕️</span><span class="quick-label lang-text" data-en="Counsellor" data-ta="ஆலோசகர்">Counsellor</span></div>
+            <div class="quick-item qi-6" onclick="setScreen('forum')"><span class="quick-icon">🌿</span><span class="quick-label lang-text" data-en="Community" data-ta="சமூகம்">Community</span></div>
+          </div>
+          <!-- AI Mood Recommendation -->
+          <div class="ai-reco-card">
+            <div class="ai-reco-badge">🤖</div>
+            <div style="flex:1;"><div style="font-size:11px;font-weight:500;color:#A5B4FC;margin-bottom:2px;">AI Suggestion for you</div><div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.4;">You seem <strong style="color:#7DD3FC;">calm</strong> today — great time for a 5-min meditation 🫧</div></div>
+            <button onclick="setScreen('meditate')" style="background:rgba(91,109,246,0.2);border:0.5px solid rgba(91,109,246,0.3);border-radius:8px;padding:5px 10px;font-size:10px;color:#C4B5FD;cursor:pointer;font-family:var(--mb-font);white-space:nowrap;">Try now</button>
+          </div>
+          <!-- Mood Reminder banner -->
+          <div class="mood-reminder" id="home-mood-reminder">
+            <span class="mood-reminder-icon">🔔</span>
+            <div class="mood-reminder-text">Daily check-in reminder · How are you feeling today?</div>
+            <button class="mood-reminder-close" onclick="document.getElementById('home-mood-reminder').style.display='none'">×</button>
+          </div>
+          <div style="background:linear-gradient(135deg,rgba(91,109,246,0.18),rgba(124,58,237,0.12));border:0.5px solid rgba(91,109,246,0.22);border-radius:18px;padding:14px;">
+            <div style="font-size:11px;font-weight:500;color:#A5B4FC;margin-bottom:4px;">✨ <span class="lang-text" data-en="Today's Insight" data-ta="இன்றைய நுண்ணறிவு">Today's Insight</span></div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.65);line-height:1.5;" class="lang-text" data-en='"Rest is not idleness. Taking breaks is how the mind heals."' data-ta='"ஓய்வு சோம்பல் அல்ல. இடைவேளைகள் மனதை குணப்படுத்துகின்றன."'>"Rest is not idleness. Taking breaks is how the mind heals."</div>
+          </div>
+        </div>
+        <div class="bottom-nav">
+          <div class="nav-item active"><span class="nav-icon">🏠</span><span class="nav-label lang-text" data-en="Home" data-ta="முகப்பு">Home</span></div>
+          <div class="nav-item" onclick="setScreen('chat')"><span class="nav-icon">💬</span><span class="nav-label lang-text" data-en="Chat" data-ta="அரட்டை">Chat</span></div>
+          <div class="nav-item"><div class="fab" onclick="openQuote()">🤍</div></div>
+          <div class="nav-item" onclick="setScreen('assesshub')"><span class="nav-icon">📋</span><span class="nav-label lang-text" data-en="Assess" data-ta="மதிப்பீடு">Assess</span></div>
+          <div class="nav-item" onclick="setScreen('profile')"><span class="nav-icon">👤</span><span class="nav-label lang-text" data-en="Profile" data-ta="சுயவிவரம்">Profile</span></div>
+        </div>
+        <!-- Emergency Quick Help -->
+        <div class="emergency-fab" onclick="setScreen('crisis')" title="Emergency Help">🆘</div>
+      </div>
+
+      <!-- ══════════════ AI CHAT ══════════════ -->
+      <div id="s-chat" class="screen grad-chat" style="display:none;">
+        <div class="px content-z" style="padding-top:12px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+            <button class="back-btn" onclick="setScreen('home')">←</button>
+            <div style="display:flex;align-items:center;gap:8px;flex:1;">
+              <div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#5B6DF6,#7C3AED);display:flex;align-items:center;justify-content:center;font-size:15px;position:relative;">🤖<span style="position:absolute;bottom:1px;right:1px;width:7px;height:7px;border-radius:50%;background:#6EE7B7;border:1.5px solid #0D1B40;"></span></div>
+              <div><div class="t-title" style="font-size:14px;" class="lang-text" data-en="Aria" data-ta="அரியா">Aria</div><div style="font-size:10px;color:#6EE7B7;">● <span class="lang-text" data-en="Online · Safe space" data-ta="ஆன்லைன் · பாதுகாப்பான இடம்">Online · Safe space</span></div></div>
+            </div>
+          </div>
+          <div style="background:rgba(110,231,183,0.08);border:0.5px solid rgba(110,231,183,0.2);border-radius:10px;padding:7px 12px;margin-bottom:12px;font-size:11px;color:rgba(110,231,183,0.8);text-align:center;" class="lang-text" data-en="🔒 This conversation is private &amp; confidential" data-ta="🔒 இந்த உரையாடல் தனிப்பட்டது">🔒 This conversation is private &amp; confidential</div>
+          <div style="min-height:320px;">
+            <div class="bubble-row"><div class="ai-avatar">🤖</div><div class="bubble-ai"><span class="lang-text" data-en="Hi Priya 💜 I'm Aria, your mental wellness companion. How are you feeling today?" data-ta="வணக்கம் பிரியா 💜 நான் அரியா, உங்கள் மன நலத்தொழில். இன்று எப்படி உணர்கிறீர்கள்?">Hi Priya 💜 I'm Aria, your mental wellness companion. How are you feeling today?</span></div></div>
+            <div class="bubble-row right"><div class="bubble-user"><span class="lang-text" data-en="Stressed about exams. Can't sleep." data-ta="தேர்வுகளால் மன அழுத்தம். தூக்கம் வரவில்லை.">Stressed about exams. Can't sleep.</span></div></div>
+            <div class="bubble-row"><div class="ai-avatar">🤖</div><div class="bubble-ai"><span class="lang-text" data-en="That sounds really tough. Would you like to try a calming technique together? I can guide you through a 4-7-8 breathing exercise right now 🌙" data-ta="இது மிகவும் கடினமாக இருக்கும். நாம் ஒரு அமைதியான நுட்பத்தை முயற்சிக்கலாமா? 🌙">That sounds really tough. Would you like to try a calming technique together? I can guide you through a 4-7-8 breathing exercise right now 🌙</span></div></div>
+            <div class="bubble-row"><div class="ai-avatar">🤖</div><div class="bubble-ai" style="padding:12px 16px;"><div style="display:flex;gap:4px;align-items:center;"><div style="width:7px;height:7px;border-radius:50%;background:rgba(196,181,253,0.7);animation:breathe 1.2s ease-in-out infinite;"></div><div style="width:7px;height:7px;border-radius:50%;background:rgba(196,181,253,0.7);animation:breathe 1.2s ease-in-out 0.2s infinite;"></div><div style="width:7px;height:7px;border-radius:50%;background:rgba(196,181,253,0.7);animation:breathe 1.2s ease-in-out 0.4s infinite;"></div></div></div></div>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;">
+            <div style="padding:6px 12px;border-radius:50px;background:rgba(91,109,246,0.15);border:0.5px solid rgba(91,109,246,0.25);font-size:11px;color:#A5B4FC;cursor:pointer;" class="lang-text" data-en="Try 4-7-8 breathing" data-ta="4-7-8 சுவாசம் முயற்சிக்க">Try 4-7-8 breathing</div>
+            <div style="padding:6px 12px;border-radius:50px;background:rgba(91,109,246,0.15);border:0.5px solid rgba(91,109,246,0.25);font-size:11px;color:#A5B4FC;cursor:pointer;" class="lang-text" data-en="Talk more 💬" data-ta="மேலும் பேசு 💬">Talk more 💬</div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <input class="input-field" style="flex:1;border-radius:50px;padding:11px 16px;" placeholder="Share how you feel…" type="text"/>
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#5B6DF6,#7C3AED);display:flex;align-items:center;justify-content:center;font-size:15px;cursor:pointer;flex-shrink:0;">→</div>
+          </div>
+        </div>
+        <div class="bottom-nav">
+          <div class="nav-item" onclick="setScreen('home')"><span class="nav-icon">🏠</span><span class="nav-label lang-text" data-en="Home" data-ta="முகப்பு">Home</span></div>
+          <div class="nav-item active"><span class="nav-icon">💬</span><span class="nav-label lang-text" data-en="Chat" data-ta="அரட்டை">Chat</span></div>
+          <div class="nav-item"><div class="fab" onclick="openQuote()">🤍</div></div>
+          <div class="nav-item" onclick="setScreen('assesshub')"><span class="nav-icon">📋</span><span class="nav-label lang-text" data-en="Assess" data-ta="மதிப்பீடு">Assess</span></div>
+          <div class="nav-item" onclick="setScreen('profile')"><span class="nav-icon">👤</span><span class="nav-label lang-text" data-en="Profile" data-ta="சுயவிவரம்">Profile</span></div>
+        </div>
+      </div>
+
+      <!-- ══════════════ ASSESSMENT ══════════════ -->
+      <div id="s-assess" class="screen grad-assess" style="display:none;">
+        <div class="px content-z" style="padding-top:12px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+            <button class="back-btn" onclick="setScreen('home')">←</button>
+            <div class="t-title" style="font-size:15px;flex:1;" class="lang-text" data-en="PHQ-9 Assessment" data-ta="PHQ-9 மதிப்பீடு">PHQ-9 Assessment</div>
+            <span class="pill pill-violet">5 / 9</span>
+          </div>
+          <div class="progress-track" style="margin-bottom:16px;"><div class="progress-fill" style="width:55%;"></div></div>
+          <div class="glass-card" style="padding:16px;margin-bottom:14px;">
+            <div style="font-size:11px;color:rgba(196,181,253,0.5);margin-bottom:6px;" class="lang-text" data-en="Over the last 2 weeks, how often have you been bothered by:" data-ta="கடந்த 2 வாரங்களில், எவ்வளவு அடிக்கடி:">Over the last 2 weeks, how often have you been bothered by:</div>
+            <div style="font-size:15px;font-weight:500;color:#fff;" class="lang-text" data-en="Feeling down, depressed, or hopeless?" data-ta="மனச்சோர்வு அல்லது நம்பிக்கையற்ற உணர்வு?">Feeling down, depressed, or hopeless?</div>
+          </div>
+          <div id="assess-options">
+            <div class="assess-option" onclick="selectAssess(this)"><div class="radio-ring"><div class="radio-dot"></div></div><div style="font-size:13px;color:rgba(255,255,255,0.7);" class="lang-text" data-en="Not at all" data-ta="இல்லவே இல்லை">Not at all</div></div>
+            <div class="assess-option" onclick="selectAssess(this)"><div class="radio-ring"><div class="radio-dot"></div></div><div style="font-size:13px;color:rgba(255,255,255,0.7);" class="lang-text" data-en="Several days" data-ta="சில நாட்கள்">Several days</div></div>
+            <div class="assess-option selected" onclick="selectAssess(this)"><div class="radio-ring"><div class="radio-dot"></div></div><div style="font-size:13px;color:rgba(255,255,255,0.85);" class="lang-text" data-en="More than half the days" data-ta="பாதிக்கும் அதிகமான நாட்கள்">More than half the days</div></div>
+            <div class="assess-option" onclick="selectAssess(this)"><div class="radio-ring"><div class="radio-dot"></div></div><div style="font-size:13px;color:rgba(255,255,255,0.7);" class="lang-text" data-en="Nearly every day" data-ta="கிட்டத்தட்ட தினமும்">Nearly every day</div></div>
+          </div>
+          <button class="btn-primary" style="width:100%;margin-top:14px;" onclick="setScreen('results')"><span class="lang-text" data-en="Next Question →" data-ta="அடுத்த கேள்வி →">Next Question →</span></button>
+        </div>
+        <div class="bottom-nav">
+          <div class="nav-item" onclick="setScreen('home')"><span class="nav-icon">🏠</span><span class="nav-label">Home</span></div>
+          <div class="nav-item" onclick="setScreen('chat')"><span class="nav-icon">💬</span><span class="nav-label">Chat</span></div>
+          <div class="nav-item"><div class="fab" onclick="openQuote()">🤍</div></div>
+          <div class="nav-item" onclick="setScreen('assesshub')"><span class="nav-icon">📋</span><span class="nav-label">Assess</span></div>
+          <div class="nav-item" onclick="setScreen('profile')"><span class="nav-icon">👤</span><span class="nav-label">Profile</span></div>
+        </div>
+      </div>
+
+      <!-- ══════════════ RESULTS ══════════════ -->
+      <div id="s-results" class="screen grad-results" style="display:none;">
+        <div class="px content-z" style="padding-top:12px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
+            <button class="back-btn" onclick="setScreen('assess')">←</button>
+            <div class="t-title" style="font-size:15px;" class="lang-text" data-en="Your Insights" data-ta="உங்கள் நுண்ணறிவு">Your Insights</div>
+          </div>
+          <div style="background:linear-gradient(135deg,rgba(91,109,246,0.22),rgba(124,58,237,0.15));border:0.5px solid rgba(91,109,246,0.3);border-radius:var(--mb-radius);padding:18px;margin-bottom:12px;text-align:center;">
+            <div style="font-size:11px;color:rgba(196,181,253,0.6);margin-bottom:6px;" class="lang-text" data-en="PHQ-9 Score" data-ta="PHQ-9 மதிப்பெண்">PHQ-9 Score</div>
+            <div style="font-size:44px;font-family:'DM Serif Display',serif;color:#fff;line-height:1;margin-bottom:6px;">8</div>
+            <span class="pill pill-amber"><span class="lang-text" data-en="Mild Depression" data-ta="மிதமான மனச்சோர்வு">Mild Depression</span></span>
+          </div>
+          <div class="glass-card" style="padding:14px;margin-bottom:12px;">
+            <div style="font-size:12px;font-weight:500;color:rgba(255,255,255,0.7);margin-bottom:10px;" class="lang-text" data-en="7-Day Mood Trend" data-ta="7 நாள் மனநிலை போக்கு">7-Day Mood Trend</div>
+            <div class="chart-bar-wrap" style="padding:0 4px;">
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div class="chart-bar low" style="height:38px;width:100%;"></div><div class="chart-day">M</div></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div class="chart-bar low" style="height:52px;width:100%;"></div><div class="chart-day">T</div></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div class="chart-bar mid" style="height:32px;width:100%;"></div><div class="chart-day">W</div></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div class="chart-bar mid" style="height:46px;width:100%;"></div><div class="chart-day">T</div></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div class="chart-bar" style="height:26px;width:100%;"></div><div class="chart-day">F</div></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div class="chart-bar low" style="height:58px;width:100%;"></div><div class="chart-day">S</div></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div class="chart-bar low" style="height:62px;width:100%;"></div><div class="chart-day">S</div></div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px;">
+            <div style="background:rgba(255,255,255,0.05);border:0.5px solid rgba(196,181,253,0.1);border-radius:14px;padding:10px;text-align:center;"><div style="font-size:18px;font-weight:600;color:#fff;">8</div><div style="font-size:10px;color:rgba(255,255,255,0.4);">PHQ-9</div><span class="pill pill-amber" style="font-size:9px;padding:2px 8px;margin-top:3px;display:inline-block;">Mild</span></div>
+            <div style="background:rgba(255,255,255,0.05);border:0.5px solid rgba(196,181,253,0.1);border-radius:14px;padding:10px;text-align:center;"><div style="font-size:18px;font-weight:600;color:#fff;">6</div><div style="font-size:10px;color:rgba(255,255,255,0.4);">GAD-7</div><span class="pill pill-mint" style="font-size:9px;padding:2px 8px;margin-top:3px;display:inline-block;">Low</span></div>
+            <div style="background:rgba(255,255,255,0.05);border:0.5px solid rgba(196,181,253,0.1);border-radius:14px;padding:10px;text-align:center;"><div style="font-size:18px;font-weight:600;color:#fff;">14</div><div style="font-size:10px;color:rgba(255,255,255,0.4);">GHQ-12</div><span class="pill pill-amber" style="font-size:9px;padding:2px 8px;margin-top:3px;display:inline-block;">Mild</span></div>
+          </div>
+          <button class="btn-primary" style="width:100%;margin-bottom:8px;" onclick="setScreen('booking')"><span class="lang-text" data-en="Book Counsellor →" data-ta="ஆலோசகர் பதிவு →">Book Counsellor →</span></button>
+          <button class="btn-ghost" style="width:100%;" onclick="setScreen('progress')"><span class="lang-text" data-en="View Full Progress" data-ta="முழு முன்னேற்றம் காண்">View Full Progress</span></button>
+        </div>
+        <div class="bottom-nav">
+          <div class="nav-item" onclick="setScreen('home')"><span class="nav-icon">🏠</span><span class="nav-label">Home</span></div>
+          <div class="nav-item" onclick="setScreen('chat')"><span class="nav-icon">💬</span><span class="nav-label">Chat</span></div>
+          <div class="nav-item"><div class="fab" onclick="openQuote()">🤍</div></div>
+          <div class="nav-item" onclick="setScreen('assesshub')"><span class="nav-icon">📋</span><span class="nav-label">Assess</span></div>
+          <div class="nav-item" onclick="setScreen('profile')"><span class="nav-icon">👤</span><span class="nav-label">Profile</span></div>
+        </div>
+      </div>
+
+      <!-- ══════════════ COUNSELLOR BOOKING ══════════════ -->
+      <div id="s-booking" class="screen grad-home-dark" style="display:none;">
+        <div class="px content-z" style="padding-top:12px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+            <button class="back-btn" onclick="setScreen('home')">←</button>
+            <div class="t-title" style="font-size:15px;flex:1;" class="lang-text" data-en="Find a Counsellor" data-ta="ஆலோசகர் தேடு">Find a Counsellor</div>
+          </div>
+          <div style="font-size:11px;color:rgba(196,181,253,0.5);margin-bottom:14px;" class="lang-text" data-en="Sessions are fully anonymous by default" data-ta="அமர்வுகள் முழுமையாக அநாமதேயம்">Sessions are fully anonymous by default</div>
+          <div style="display:flex;gap:6px;margin-bottom:14px;overflow-x:auto;padding-bottom:2px;">
+            <button class="tab active" style="white-space:nowrap;font-size:11px;" class="lang-text" data-en="All" data-ta="அனைத்தும்">All</button>
+            <button class="tab" style="white-space:nowrap;font-size:11px;">Anxiety</button>
+            <button class="tab" style="white-space:nowrap;font-size:11px;">Depression</button>
+            <button class="tab" style="white-space:nowrap;font-size:11px;">Stress</button>
+          </div>
+          <div class="glass-card" style="padding:14px;margin-bottom:10px;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+              <div class="counsellor-avatar" style="background:linear-gradient(135deg,rgba(91,109,246,0.3),rgba(124,58,237,0.2));border:0.5px solid rgba(196,181,253,0.2);">🧑‍⚕️</div>
+              <div style="flex:1;"><div style="font-size:13px;font-weight:500;color:#fff;margin-bottom:2px;">Dr. Meera Sharma</div><div style="font-size:11px;color:rgba(255,255,255,0.4);">Anxiety · Depression · 8 yrs</div></div>
+              <div style="text-align:right;"><div style="font-size:12px;color:#FCD34D;">★ 4.9</div><div style="font-size:10px;color:#6EE7B7;" class="lang-text" data-en="Available" data-ta="கிடைக்கும்">Available</div></div>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px;">
+              <button class="slot-btn active" style="font-size:11px;" class="lang-text" data-en="Today 4PM" data-ta="இன்று 4மணி">Today 4PM</button>
+              <button class="slot-btn" style="font-size:11px;">Today 6PM</button>
+              <button class="slot-btn" style="font-size:11px;">Tmrw 10AM</button>
+            </div>
+            <button class="btn-primary" style="width:100%;padding:10px;" class="lang-text" data-en="Book Anonymous" data-ta="அநாமதேயமாக பதிவு">Book Anonymous</button>
+          </div>
+          <div style="background:rgba(110,231,183,0.08);border:0.5px solid rgba(110,231,183,0.2);border-radius:12px;padding:10px 12px;font-size:11px;color:rgba(110,231,183,0.7);display:flex;gap:7px;align-items:center;">
+            <span>🔒</span><span class="lang-text" data-en="Your identity is never shared with counsellors unless you choose to reveal it." data-ta="நீங்கள் விரும்பாவிட்டால் உங்கள் அடையாளம் பகிரப்படாது.">Your identity is never shared with counsellors unless you choose to reveal it.</span>
+          </div>
+        </div>
+        <div class="bottom-nav">
+          <div class="nav-item" onclick="setScreen('home')"><span class="nav-icon">🏠</span><span class="nav-label">Home</span></div>
+          <div class="nav-item" onclick="setScreen('chat')"><span class="nav-icon">💬</span><span class="nav-label">Chat</span></div>
+          <div class="nav-item"><div class="fab" onclick="openQuote()">🤍</div></div>
+          <div class="nav-item active"><span class="nav-icon">🧑‍⚕️</span><span class="nav-label">Counsellor</span></div>
+          <div class="nav-item" onclick="setScreen('profile')"><span class="nav-icon">👤</span><span class="nav-label">Profile</span></div>
+        </div>
+      </div>
+
+      <!-- ══════════════ MEDITATION ══════════════ -->
+      <div id="s-meditate" class="screen grad-meditate" style="display:none;">
+        <div class="px content-z" style="padding-top:12px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+            <button class="back-btn" onclick="setScreen('home')">←</button>
+            <div class="t-title" style="font-size:15px;flex:1;" class="lang-text" data-en="Breathing Space" data-ta="சுவாச இடம்">Breathing Space</div>
+          </div>
+          <div style="display:flex;gap:6px;margin-bottom:16px;">
+            <button class="tab active" style="font-size:11px;">4-7-8 Breath</button>
+            <button class="tab" style="font-size:11px;">Box Breath</button>
+            <button class="tab" style="font-size:11px;">Body Scan</button>
+          </div>
+          <div class="breathe-container">
+            <div class="breathe-ring ring3"></div>
+            <div class="breathe-ring ring2"></div>
+            <div class="breathe-ring ring1"></div>
+            <div class="breathe-text"><div style="font-size:14px;font-weight:500;" class="lang-text" data-en="Breathe In" data-ta="சுவாசி">Breathe In</div><div style="font-size:26px;font-weight:600;margin-top:2px;">4</div></div>
+          </div>
+          <div style="text-align:center;margin-bottom:16px;"><div style="font-size:11px;color:rgba(255,255,255,0.35);margin-bottom:3px;" class="lang-text" data-en="Session time" data-ta="அமர்வு நேரம்">Session time</div><div style="font-size:26px;font-weight:600;color:#fff;">05:00</div></div>
+          <div style="display:flex;gap:8px;margin-bottom:14px;">
+            <button class="btn-primary" style="flex:1;padding:12px;" class="lang-text" data-en="▶ Start" data-ta="▶ தொடங்கு">▶ Start</button>
+            <button class="btn-ghost" style="padding:12px 14px;">↺</button>
+          </div>
+          <div style="display:flex;gap:6px;margin-bottom:14px;">
+            <button class="slot-btn" style="font-size:11px;">3 min</button>
+            <button class="slot-btn active" style="font-size:11px;">5 min</button>
+            <button class="slot-btn" style="font-size:11px;">10 min</button>
+            <button class="slot-btn" style="font-size:11px;">15 min</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════ FORUM ══════════════ -->
+      <div id="s-forum" class="screen grad-home-dark" style="display:none;">
+        <div class="px content-z" style="padding-top:12px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+            <div class="t-title" style="font-size:17px;" class="lang-text" data-en="Community" data-ta="சமூகம்">Community</div>
+            <button class="btn-ghost" style="padding:7px 12px;font-size:11px;" class="lang-text" data-en="+ Post" data-ta="+ இடுகை">+ Post</button>
+          </div>
+          <div style="font-size:11px;color:rgba(196,181,253,0.5);margin-bottom:12px;" class="lang-text" data-en="A safe, moderated, anonymous space 🌿" data-ta="பாதுகாப்பான, கண்காணிக்கப்பட்ட இடம் 🌿">A safe, moderated, anonymous space 🌿</div>
+          <div style="display:flex;gap:6px;margin-bottom:12px;">
+            <button class="tab active" style="font-size:11px;" class="lang-text" data-en="Recent" data-ta="சமீபத்திய">Recent</button>
+            <button class="tab" style="font-size:11px;" class="lang-text" data-en="Popular" data-ta="பிரபலமான">Popular</button>
+            <button class="tab" style="font-size:11px;" class="lang-text" data-en="My Posts" data-ta="என் இடுகைகள்">My Posts</button>
+          </div>
+          <div class="forum-post">
+            <div style="display:flex;align-items:center;gap:7px;margin-bottom:7px;">
+              <div class="anon-avatar" style="background:rgba(110,231,183,0.15);color:#6EE7B7;">🌿</div>
+              <div><div style="font-size:11px;font-weight:500;color:rgba(255,255,255,0.7);">Anon · Calm Garden</div><div style="font-size:10px;color:rgba(255,255,255,0.3);">2h ago</div></div>
+              <span class="pill pill-mint" style="margin-left:auto;font-size:9px;">Anxiety</span>
+            </div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;margin-bottom:8px;" class="lang-text" data-en="Does anyone else feel drained after back-to-back lectures? The breathing tool actually helps 🌬️" data-ta="தொடர் வகுப்புகளுக்குப் பிறகு சோர்வாக உணர்கிறீர்களா? சுவாச கருவி உதவுகிறது 🌬️">Does anyone else feel drained after back-to-back lectures? The breathing tool actually helps 🌬️</div>
+            <div style="display:flex;align-items:center;gap:12px;">
+              <button onclick="likePost(this)" style="background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:4px;font-size:11px;color:rgba(255,255,255,0.4);font-family:var(--mb-font);">♡ <span class="like-count">24</span></button>
+              <button style="background:none;border:none;cursor:pointer;font-size:11px;color:rgba(255,255,255,0.4);font-family:var(--mb-font);">💬 8</button>
+            </div>
+          </div>
+          <div class="forum-post">
+            <div style="display:flex;align-items:center;gap:7px;margin-bottom:7px;">
+              <div class="anon-avatar" style="background:rgba(125,211,252,0.12);color:#7DD3FC;">🌊</div>
+              <div><div style="font-size:11px;font-weight:500;color:rgba(255,255,255,0.7);">Anon · Blue Wave</div><div style="font-size:10px;color:rgba(255,255,255,0.3);">5h ago</div></div>
+              <span class="pill pill-sky" style="margin-left:auto;font-size:9px;">Study</span>
+            </div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.65);line-height:1.6;margin-bottom:8px;" class="lang-text" data-en="Just completed my GAD-7 assessment. If you haven't tried it, please do 🙏" data-ta="GAD-7 மதிப்பீட்டை முடித்தேன். முயற்சிக்கவில்லை என்றால் செய்யுங்கள் 🙏">Just completed my GAD-7 assessment. If you haven't tried it, please do 🙏</div>
+            <div style="display:flex;align-items:center;gap:12px;">
+              <button onclick="likePost(this)" style="background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:4px;font-size:11px;color:rgba(255,255,255,0.4);font-family:var(--mb-font);">♡ <span class="like-count">41</span></button>
+              <button style="background:none;border:none;cursor:pointer;font-size:11px;color:rgba(255,255,255,0.4);font-family:var(--mb-font);">💬 15</button>
+            </div>
+          </div>
+        </div>
+        <div class="bottom-nav">
+          <div class="nav-item" onclick="setScreen('home')"><span class="nav-icon">🏠</span><span class="nav-label">Home</span></div>
+          <div class="nav-item" onclick="setScreen('chat')"><span class="nav-icon">💬</span><span class="nav-label">Chat</span></div>
+          <div class="nav-item"><div class="fab" onclick="openQuote()">🤍</div></div>
+          <div class="nav-item active" onclick="setScreen('forum')"><span class="nav-icon">🌿</span><span class="nav-label">Community</span></div>
+          <div class="nav-item" onclick="setScreen('profile')"><span class="nav-icon">👤</span><span class="nav-label">Profile</span></div>
+        </div>
+      </div>
+
+      <!-- ══════════════ CRISIS ══════════════ -->
+      <div id="s-crisis" class="screen grad-crisis" style="display:none;">
+        <div class="px content-z" style="padding-top:24px;text-align:center;">
+          <div style="font-size:44px;margin-bottom:10px;">🆘</div>
+          <div style="font-family:'DM Serif Display',serif;font-size:24px;color:#fff;margin-bottom:8px;line-height:1.3;" class="lang-text" data-en="You're not alone. Help is here." data-ta="நீங்கள் தனியல்ல. உதவி இங்கே.">You're not alone. Help is here.</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.6;margin-bottom:22px;" class="lang-text" data-en="If you're in crisis, please reach out immediately." data-ta="நீங்கள் நெருக்கடியில் இருந்தால் உடனே தொடர்பு கொள்ளுங்கள்.">If you're in crisis, please reach out immediately.</div>
+          <div style="position:relative;display:inline-block;margin-bottom:22px;">
+            <div style="position:absolute;inset:-8px;border-radius:50px;background:rgba(239,68,68,0.25);animation:crisis-pulse 2s ease-in-out infinite;"></div>
+            <button class="btn-crisis crisis-pulse" style="position:relative;" class="lang-text" data-en="📞 Call iCall Now — Free" data-ta="📞 iCall அழையுங்கள் — இலவசம்">📞 Call iCall Now — Free</button>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;text-align:left;margin-bottom:16px;">
+            <div class="glass-card" style="padding:12px;display:flex;align-items:center;gap:10px;"><span style="font-size:20px;">📱</span><div style="flex:1;"><div style="font-size:12px;font-weight:500;color:#fff;">iCall · TISS Mumbai</div><div style="font-size:11px;color:rgba(255,255,255,0.4);">9152987821 · Mon–Sat 8am–10pm</div></div><div style="background:rgba(239,68,68,0.2);border:0.5px solid rgba(239,68,68,0.3);border-radius:8px;padding:7px 12px;font-size:11px;color:#FCA5A5;cursor:pointer;">Call</div></div>
+            <div class="glass-card" style="padding:12px;display:flex;align-items:center;gap:10px;"><span style="font-size:20px;">💬</span><div style="flex:1;"><div style="font-size:12px;font-weight:500;color:#fff;">Vandrevala Foundation</div><div style="font-size:11px;color:rgba(255,255,255,0.4);">1860-2662-345 · 24/7</div></div><div style="background:rgba(239,68,68,0.2);border:0.5px solid rgba(239,68,68,0.3);border-radius:8px;padding:7px 12px;font-size:11px;color:#FCA5A5;cursor:pointer;">Call</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════ PROFILE ══════════════ -->
+      <div id="s-profile" class="screen grad-home-dark" style="display:none;">
+        <div class="px content-z" style="padding-top:14px;">
+          <div style="text-align:center;margin-bottom:16px;">
+            <div style="width:68px;height:68px;border-radius:50%;background:linear-gradient(135deg,#5B6DF6,#7C3AED);margin:0 auto 8px;display:flex;align-items:center;justify-content:center;font-size:28px;border:3px solid rgba(196,181,253,0.2);">🌸</div>
+            <div style="font-size:17px;font-weight:600;color:#fff;margin-bottom:2px;" class="lang-text" data-en="Priya M." data-ta="பிரியா மீ.">Priya M.</div>
+            <div style="font-size:11px;color:rgba(196,181,253,0.5);margin-bottom:6px;">Anonymous ID: #MB-4729</div>
+            <span class="pill pill-violet" style="font-size:10px;" class="lang-text" data-en="Student · IIT Madras" data-ta="மாணவர் · IIT மதராஸ்">Student · IIT Madras</span>
+            <div style="margin-top:6px;">
+              <button onclick="isModerator=!isModerator;applyModeratorVisibility();this.textContent=isModerator?'👁 Role: Moderator':'👁 Role: Student';" style="background:rgba(251,191,36,0.08);border:0.5px solid rgba(251,191,36,0.2);border-radius:50px;padding:4px 11px;font-size:9.5px;font-weight:500;color:rgba(252,211,77,0.55);font-family:var(--mb-font);cursor:pointer;letter-spacing:0.02em;">👁 Role: Moderator</button>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:14px;">
+            <div class="stat-pill"><div style="font-size:18px;font-weight:600;color:#fff;">14</div><div style="font-size:10px;color:rgba(255,255,255,0.4);" class="lang-text" data-en="Sessions" data-ta="அமர்வுகள்">Sessions</div></div>
+            <div class="stat-pill"><div style="font-size:18px;font-weight:600;color:#fff;">7</div><div style="font-size:10px;color:rgba(255,255,255,0.4);" class="lang-text" data-en="Day Streak" data-ta="தொடர்ச்சி">Day Streak</div></div>
+            <div class="stat-pill"><div style="font-size:18px;font-weight:600;color:#fff;">72</div><div style="font-size:10px;color:rgba(255,255,255,0.4);" class="lang-text" data-en="Wellness" data-ta="நலன்">Wellness</div></div>
+          </div>
+          <div style="display:flex;gap:8px;margin-bottom:14px;">
+            <button class="btn-primary" style="flex:1;padding:10px;font-size:13px;" onclick="setScreen('progress')" class="lang-text" data-en="📈 My Progress" data-ta="📈 என் முன்னேற்றம்">📈 My Progress</button>
+            <button class="btn-ghost" style="flex:1;padding:10px;font-size:13px;" onclick="setScreen('editprofile')">✏️ Edit Profile</button>
+          </div>
+          <div class="glass-card" style="padding:4px 14px;margin-bottom:12px;">
+            <div class="settings-row"><div style="display:flex;align-items:center;gap:9px;"><span style="font-size:15px;">🔔</span><div><div style="font-size:12px;font-weight:500;color:rgba(255,255,255,0.8);" class="lang-text" data-en="Daily Check-in Reminder" data-ta="தினசரி நினைவூட்டல்">Daily Check-in Reminder</div></div></div><div class="toggle"></div></div>
+            <div class="settings-row"><div style="display:flex;align-items:center;gap:9px;"><span style="font-size:15px;">🌙</span><div><div style="font-size:12px;font-weight:500;color:rgba(255,255,255,0.8);" class="lang-text" data-en="Dark Mode" data-ta="இருட்டு பயன்முறை">Dark Mode</div></div></div><div class="toggle"></div></div>
+            <div class="settings-row"><div style="display:flex;align-items:center;gap:9px;"><span style="font-size:15px;">🔒</span><div><div style="font-size:12px;font-weight:500;color:rgba(255,255,255,0.8);" class="lang-text" data-en="Anonymous Mode" data-ta="அநாமதேய பயன்முறை">Anonymous Mode</div></div></div><div class="toggle"></div></div>
+          </div>
+          <div style="background:rgba(91,109,246,0.08);border:0.5px solid rgba(91,109,246,0.2);border-radius:14px;padding:12px;display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+            <div style="display:flex;align-items:center;gap:8px;"><span>🌐</span><div style="font-size:12px;font-weight:500;color:rgba(255,255,255,0.8);" class="lang-text" data-en="Language / மொழி" data-ta="Language / மொழி">Language / மொழி</div></div>
+            <div class="lang-toggle"><button class="lang-btn active" id="prof-en" onclick="setLang('en')">EN</button><button class="lang-btn" id="prof-ta" onclick="setLang('ta')">தமிழ்</button></div>
+          </div>
+          <div style="background:rgba(239,68,68,0.08);border:0.5px solid rgba(239,68,68,0.2);border-radius:14px;padding:10px 12px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;" onclick="setScreen('crisis')">
+            <div style="display:flex;align-items:center;gap:7px;"><span style="font-size:15px;">🆘</span><div><div style="font-size:12px;font-weight:500;color:#FCA5A5;" class="lang-text" data-en="Crisis Helpline" data-ta="நெருக்கடி உதவி">Crisis Helpline</div></div></div>
+            <span style="color:rgba(252,165,165,0.6);font-size:14px;">→</span>
+          </div>
+
+          <!-- ── MODERATOR PANEL (visible to moderators/volunteers only) ── -->
+          <div id="mod-admin-panel" style="margin-top:10px;">
+            <div style="font-size:10px;font-weight:500;color:rgba(251,191,36,0.4);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px;padding-left:2px;">Moderator Access</div>
+            <div class="mod-panel" onclick="setScreen('modq')">
+              <div style="display:flex;align-items:center;gap:8px;">
+                <span style="font-size:15px;">🛡️</span>
+                <div>
+                  <div style="font-size:12px;font-weight:500;color:rgba(252,211,77,0.85);" class="lang-text" data-en="Moderation Queue" data-ta="மதிப்பாய்வு வரிசை">Moderation Queue</div>
+                  <div style="font-size:10px;color:rgba(252,211,77,0.4);margin-top:1px;" class="lang-text" data-en="Review flagged content" data-ta="கொடியிடப்பட்ட உள்ளடக்கம்">Review flagged content</div>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;gap:7px;">
+                <span class="mod-badge">3 pending</span>
+                <span style="color:rgba(252,211,77,0.4);font-size:13px;">→</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bottom-nav">
+          <div class="nav-item" onclick="setScreen('home')"><span class="nav-icon">🏠</span><span class="nav-label">Home</span></div>
+          <div class="nav-item" onclick="setScreen('chat')"><span class="nav-icon">💬</span><span class="nav-label">Chat</span></div>
+          <div class="nav-item"><div class="fab" onclick="openQuote()">🤍</div></div>
+          <div class="nav-item" onclick="setScreen('assesshub')"><span class="nav-icon">📋</span><span class="nav-label">Assess</span></div>
+          <div class="nav-item active"><span class="nav-icon">👤</span><span class="nav-label">Profile</span></div>
+        </div>
+      </div>
+
+      <!-- ══════════════ FACE VERIFICATION ══════════════ -->
+      <div id="s-faceid" class="screen grad-faceid" style="display:none;">
+        <div class="px content-z" style="padding-top:12px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+            <button class="back-btn" onclick="setScreen('login')">←</button>
+            <div class="t-title" style="font-size:15px;" class="lang-text" data-en="Counsellor Verification" data-ta="ஆலோசகர் சரிபார்ப்பு">Counsellor Verification</div>
+          </div>
+          <div style="background:rgba(110,231,183,0.08);border:0.5px solid rgba(110,231,183,0.2);border-radius:10px;padding:8px 12px;margin-bottom:20px;font-size:11px;color:rgba(110,231,183,0.8);text-align:center;" class="lang-text" data-en="🔒 Camera access is used only for verification. No data is stored." data-ta="🔒 கேமரா சரிபார்ப்புக்கு மட்டுமே. தரவு சேமிக்கப்படாது.">🔒 Camera access is used only for verification. No data is stored.</div>
+
+          <!-- Camera preview simulation -->
+          <div style="width:220px;height:260px;margin:0 auto 20px;border-radius:24px;background:linear-gradient(160deg,#0A1020,#0D1530);border:0.5px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
+            <!-- Simulated camera bg -->
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(30,50,80,0.9) 0%,rgba(8,15,30,1) 100%);"></div>
+            <!-- Face shape representation -->
+            <div style="position:absolute;width:90px;height:110px;border-radius:50%;background:rgba(40,60,100,0.4);top:60px;left:65px;"></div>
+            <!-- Face frame overlay -->
+            <div class="face-frame" style="position:absolute;top:20px;left:10px;">
+              <div class="face-oval"></div>
+              <div class="face-corner fc-tl"></div>
+              <div class="face-corner fc-tr"></div>
+              <div class="face-corner fc-bl"></div>
+              <div class="face-corner fc-br"></div>
+              <div class="face-scan-line"></div>
+              <!-- Face detection dots -->
+              <div class="face-dot" style="top:40%;left:30%;"></div>
+              <div class="face-dot" style="top:40%;right:30%;animation-delay:0.3s;"></div>
+              <div class="face-dot" style="top:58%;left:50%;transform:translateX(-50%);animation-delay:0.6s;"></div>
+              <div class="face-dot" style="top:72%;left:35%;animation-delay:0.2s;"></div>
+              <div class="face-dot" style="top:72%;right:35%;animation-delay:0.5s;"></div>
+            </div>
+          </div>
+
+          <!-- Status indicator -->
+          <div id="face-status" style="background:rgba(110,231,183,0.12);border:0.5px solid rgba(110,231,183,0.3);border-radius:50px;padding:8px 20px;width:fit-content;margin:0 auto 20px;display:flex;align-items:center;gap:7px;">
+            <div style="width:7px;height:7px;border-radius:50%;background:#6EE7B7;animation:face-detect-pulse 1.5s ease-in-out infinite;flex-shrink:0;"></div>
+            <span style="font-size:12px;color:#6EE7B7;" class="lang-text" data-en="Face detected — hold still" data-ta="முகம் கண்டறியப்பட்டது — நிலையாக இருங்கள்">Face detected — hold still</span>
+          </div>
+
+          <!-- Instructions -->
+          <div class="glass-card" style="padding:14px;margin-bottom:16px;">
+            <div style="font-size:12px;font-weight:500;color:rgba(255,255,255,0.7);margin-bottom:10px;" class="lang-text" data-en="How to position your face:" data-ta="முகத்தை சரியாக வைக்கவும்:">How to position your face:</div>
+            <div style="display:flex;flex-direction:column;gap:7px;">
+              <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,0.6);"><span style="color:#6EE7B7;">✓</span> <span class="lang-text" data-en="Look directly at the camera" data-ta="கேமராவை நேரடியாக பாருங்கள்">Look directly at the camera</span></div>
+              <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,0.6);"><span style="color:#6EE7B7;">✓</span> <span class="lang-text" data-en="Ensure good lighting" data-ta="நல்ல வெளிச்சம் இருக்கட்டும்">Ensure good lighting</span></div>
+              <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,0.6);"><span style="color:#FCD34D;">!</span> <span class="lang-text" data-en="Remove glasses if possible" data-ta="கண்ணாடி இருந்தால் எடுக்கவும்">Remove glasses if possible</span></div>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:8px;">
+            <button class="btn-primary" style="flex:1;" id="face-verify-btn" onclick="simulateFaceScan()"><span class="lang-text" data-en="Verify Identity" data-ta="அடையாளம் சரிபார்">Verify Identity</span></button>
+            <button class="btn-ghost" style="padding:14px 16px;" onclick="setScreen('login')"><span class="lang-text" data-en="Skip" data-ta="தவிர்">Skip</span></button>
+          </div>
+          <div style="margin-top:12px;text-align:center;font-size:11px;color:rgba(255,255,255,0.25);" class="lang-text" data-en="Verification data is end-to-end encrypted and deleted after 24h" data-ta="சரிபார்ப்பு தரவு 24 மணி நேரத்தில் அழிக்கப்படும்">Verification data is end-to-end encrypted and deleted after 24h</div>
+        </div>
+        <div class="bottom-nav">
+          <div class="nav-item" onclick="setScreen('home')"><span class="nav-icon">🏠</span><span class="nav-label">Home</span></div>
+          <div class="nav-item" onclick="setScreen('chat')"><span class="nav-icon">💬</span><span class="nav-label">Chat</span></div>
+          <div class="nav-item"><div class="fab" onclick="openQuote()">🤍</div></div>
+          <div class="nav-item" onclick="setScreen('assesshub')"><span class="nav-icon">📋</span><span class="nav-label">Assess</span></div>
+          <div class="nav-item" onclick="setScreen('profile')"><span class="nav-icon">👤</span><span class="nav-label">Profile</span></div>
+        </div>
+      </div>
+
+      <!-- ══════════════ PROGRESS DASHBOARD ══════════════ -->
+      <div id="s-progress" class="screen grad-progress" style="display:none;">
+        <div class="px content-z" style="padding-top:12px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+            <button class="back-btn" onclick="setScreen('home')">←</button>
+            <div class="t-title" style="font-size:15px;flex:1;" class="lang-text" data-en="My Progress" data-ta="என் முன்னேற்றம்">My Progress</div>
+            <div style="display:flex;gap:4px;">
+              <button class="tab active" style="font-size:10px;padding:5px 10px;" onclick="setTimeRange(this,'week')" class="lang-text" data-en="Week" data-ta="வாரம்">Week</button>
+              <button class="tab" style="font-size:10px;padding:5px 10px;" onclick="setTimeRange(this,'month')" class="lang-text" data-en="Month" data-ta="மாதம்">Month</button>
+            </div>
+          </div>
+
+          <!-- Streak badges -->
+          <div style="display:flex;gap:8px;margin-bottom:14px;overflow-x:auto;padding-bottom:2px;">
+            <div class="streak-badge"><span style="font-size:16px;">🔥</span><div><div style="font-size:13px;font-weight:600;color:#FCD34D;">7</div><div style="font-size:10px;color:rgba(252,211,77,0.7);" class="lang-text" data-en="Day streak" data-ta="நாள் தொடர்">Day streak</div></div></div>
+            <div class="streak-badge" style="background:linear-gradient(135deg,rgba(110,231,183,0.15),rgba(52,211,153,0.08));border-color:rgba(110,231,183,0.25);"><span style="font-size:16px;">🧘</span><div><div style="font-size:13px;font-weight:600;color:#6EE7B7;">12</div><div style="font-size:10px;color:rgba(110,231,183,0.7);" class="lang-text" data-en="Meditations" data-ta="தியானங்கள்">Meditations</div></div></div>
+            <div class="streak-badge" style="background:linear-gradient(135deg,rgba(196,181,253,0.15),rgba(124,58,237,0.08));border-color:rgba(196,181,253,0.25);"><span style="font-size:16px;">📋</span><div><div style="font-size:13px;font-weight:600;color:#C4B5FD;">3</div><div style="font-size:10px;color:rgba(196,181,253,0.7);" class="lang-text" data-en="Assessments" data-ta="மதிப்பீடுகள்">Assessments</div></div></div>
+          </div>
+
+          <!-- Wellness over time chart -->
+          <div class="progress-mini-card" onclick="expandChart(this)">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+              <div style="font-size:12px;font-weight:500;color:rgba(255,255,255,0.8);" class="lang-text" data-en="Wellness Score Trend" data-ta="நலன் மதிப்பெண் போக்கு">Wellness Score Trend</div>
+              <span style="font-size:10px;color:rgba(110,231,183,0.8);">↑ 12% <span class="lang-text" data-en="this week" data-ta="இந்த வாரம்">this week</span></span>
+            </div>
+            <div style="display:flex;align-items:flex-end;gap:5px;height:60px;padding:0 2px;" id="wellness-chart">
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;border-radius:4px 4px 0 0;height:34px;background:linear-gradient(180deg,rgba(91,109,246,0.6),rgba(91,109,246,0.3));"></div><div class="chart-day">M</div></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;border-radius:4px 4px 0 0;height:40px;background:linear-gradient(180deg,rgba(91,109,246,0.6),rgba(91,109,246,0.3));"></div><div class="chart-day">T</div></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;border-radius:4px 4px 0 0;height:28px;background:linear-gradient(180deg,rgba(91,109,246,0.6),rgba(91,109,246,0.3));"></div><div class="chart-day">W</div></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;border-radius:4px 4px 0 0;height:44px;background:linear-gradient(180deg,rgba(91,109,246,0.6),rgba(91,109,246,0.3));"></div><div class="chart-day">T</div></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;border-radius:4px 4px 0 0;height:38px;background:linear-gradient(180deg,rgba(91,109,246,0.6),rgba(91,109,246,0.3));"></div><div class="chart-day">F</div></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;border-radius:4px 4px 0 0;height:52px;background:linear-gradient(180deg,rgba(110,231,183,0.8),rgba(110,231,183,0.4));"></div><div class="chart-day">S</div></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;border-radius:4px 4px 0 0;height:58px;background:linear-gradient(180deg,rgba(110,231,183,0.8),rgba(110,231,183,0.4));"></div><div class="chart-day">S</div></div>
+            </div>
+            <div style="margin-top:4px;font-size:10px;color:rgba(255,255,255,0.3);text-align:right;" class="lang-text" data-en="Tap to expand" data-ta="விரிக்க தட்டவும்">Tap to expand</div>
+          </div>
+
+          <!-- PHQ/GAD tracking -->
+          <div class="progress-mini-card" style="margin-bottom:10px;">
+            <div style="font-size:12px;font-weight:500;color:rgba(255,255,255,0.8);margin-bottom:10px;" class="lang-text" data-en="Assessment History" data-ta="மதிப்பீட்டு வரலாறு">Assessment History</div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div>
+                <div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:11px;color:rgba(255,255,255,0.5);">PHQ-9</span><span style="font-size:11px;color:rgba(252,211,77,0.8);">8 → <span style="color:#6EE7B7;">6</span></span></div>
+                <div style="height:5px;background:rgba(255,255,255,0.08);border-radius:3px;overflow:hidden;"><div style="width:60%;height:100%;background:linear-gradient(90deg,#FCD34D,#6EE7B7);border-radius:3px;"></div></div>
+              </div>
+              <div>
+                <div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:11px;color:rgba(255,255,255,0.5);">GAD-7</span><span style="font-size:11px;color:rgba(252,211,77,0.8);">9 → <span style="color:#6EE7B7;">6</span></span></div>
+                <div style="height:5px;background:rgba(255,255,255,0.08);border-radius:3px;overflow:hidden;"><div style="width:65%;height:100%;background:linear-gradient(90deg,#FCD34D,#6EE7B7);border-radius:3px;"></div></div>
+              </div>
+              <div>
+                <div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-size:11px;color:rgba(255,255,255,0.5);">GHQ-12</span><span style="font-size:11px;color:rgba(252,211,77,0.8);">14 → <span style="color:#6EE7B7;">11</span></span></div>
+                <div style="height:5px;background:rgba(255,255,255,0.08);border-radius:3px;overflow:hidden;"><div style="width:55%;height:100%;background:linear-gradient(90deg,#FCD34D,#6EE7B7);border-radius:3px;"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Insight cards -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
+            <div style="background:linear-gradient(135deg,rgba(110,231,183,0.15),rgba(52,211,153,0.08));border:0.5px solid rgba(110,231,183,0.25);border-radius:16px;padding:12px;animation:card-float 4s ease-in-out infinite;">
+              <div style="font-size:18px;margin-bottom:4px;">📈</div>
+              <div style="font-size:12px;font-weight:500;color:#6EE7B7;" class="lang-text" data-en="You're improving!" data-ta="நீங்கள் முன்னேறுகிறீர்கள்!">You're improving!</div>
+              <div style="font-size:10px;color:rgba(110,231,183,0.6);margin-top:3px;" class="lang-text" data-en="PHQ-9 down 2pts this week" data-ta="PHQ-9 இந்த வாரம் 2 குறைந்தது">PHQ-9 down 2pts this week</div>
+            </div>
+            <div style="background:linear-gradient(135deg,rgba(125,211,252,0.15),rgba(56,189,248,0.08));border:0.5px solid rgba(125,211,252,0.25);border-radius:16px;padding:12px;animation:card-float 4s ease-in-out 0.7s infinite;">
+              <div style="font-size:18px;margin-bottom:4px;">🌙</div>
+              <div style="font-size:12px;font-weight:500;color:#7DD3FC;" class="lang-text" data-en="Take a break" data-ta="ஓய்வெடுங்கள்">Take a break</div>
+              <div style="font-size:10px;color:rgba(125,211,252,0.6);margin-top:3px;" class="lang-text" data-en="3 late nights detected" data-ta="3 தாமதமான இரவுகள் கண்டறியப்பட்டன">3 late nights detected</div>
+            </div>
+          </div>
+        </div>
+        <div class="bottom-nav">
+          <div class="nav-item" onclick="setScreen('home')"><span class="nav-icon">🏠</span><span class="nav-label">Home</span></div>
+          <div class="nav-item" onclick="setScreen('chat')"><span class="nav-icon">💬</span><span class="nav-label">Chat</span></div>
+          <div class="nav-item"><div class="fab" onclick="openQuote()">🤍</div></div>
+          <div class="nav-item" onclick="setScreen('assesshub')"><span class="nav-icon">📋</span><span class="nav-label">Assess</span></div>
+          <div class="nav-item" onclick="setScreen('profile')"><span class="nav-icon">👤</span><span class="nav-label active" style="color:var(--mb-indigo);">Profile</span></div>
+        </div>
+      </div>
+
+      <!-- ══════════════ RESOURCE HUB ══════════════ -->
+      <div id="s-resources" class="screen grad-resources" style="display:none;">
+        <div class="px content-z" style="padding-top:12px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+            <div class="t-title" style="font-size:17px;" class="lang-text" data-en="Resource Hub" data-ta="வள மையம்">Resource Hub</div>
+            <button onclick="setScreen('notifs')" style="background:none;border:none;cursor:pointer;position:relative;"><span style="font-size:20px;">🔔</span><span style="position:absolute;top:-2px;right:-2px;width:7px;height:7px;border-radius:50%;background:#EF4444;border:1.5px solid #0A0F28;"></span></button>
+          </div>
+          <!-- Search -->
+          <div style="position:relative;margin-bottom:14px;">
+            <span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:14px;pointer-events:none;">🔍</span>
+            <input class="input-field" style="padding-left:36px;border-radius:50px;" placeholder="Search articles, guides…" type="text"/>
+          </div>
+          <!-- Category pills -->
+          <div style="display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:14px;">
+            <button class="slot-btn active" style="white-space:nowrap;font-size:11px;" class="lang-text" data-en="All" data-ta="அனைத்தும்">All</button>
+            <button class="slot-btn" style="white-space:nowrap;font-size:11px;" class="lang-text" data-en="Anxiety" data-ta="கவலை">Anxiety</button>
+            <button class="slot-btn" style="white-space:nowrap;font-size:11px;" class="lang-text" data-en="Sleep" data-ta="தூக்கம்">Sleep</button>
+            <button class="slot-btn" style="white-space:nowrap;font-size:11px;" class="lang-text" data-en="Stress" data-ta="மன அழுத்தம்">Stress</button>
+            <button class="slot-btn" style="white-space:nowrap;font-size:11px;" class="lang-text" data-en="Exams" data-ta="தேர்வுகள்">Exams</button>
+          </div>
+          <!-- Recommended -->
+          <div style="font-size:12px;font-weight:500;color:rgba(255,255,255,0.6);margin-bottom:8px;" class="lang-text" data-en="Recommended for you" data-ta="உங்களுக்கான பரிந்துரைகள்">Recommended for you</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
+            <div class="res-card">
+              <div class="res-thumb" style="background:linear-gradient(135deg,rgba(91,109,246,0.3),rgba(124,58,237,0.2));">📘</div>
+              <div class="res-body">
+                <span class="pill pill-violet" style="font-size:9px;padding:2px 8px;">Guide</span>
+                <div style="font-size:12px;font-weight:500;color:rgba(255,255,255,0.85);margin-top:5px;line-height:1.3;" class="lang-text" data-en="Managing Exam Anxiety" data-ta="தேர்வு கவலை மேலாண்மை">Managing Exam Anxiety</div>
+                <div style="font-size:10px;color:rgba(255,255,255,0.35);margin-top:3px;">5 min read</div>
+                <button onclick="toggleBookmark(this)" style="background:none;border:none;cursor:pointer;font-size:14px;padding:4px 0;display:block;">🔖</button>
+              </div>
+            </div>
+            <div class="res-card" style="animation-delay:0.5s;">
+              <div class="res-thumb" style="background:linear-gradient(135deg,rgba(110,231,183,0.2),rgba(52,211,153,0.1));">🎬</div>
+              <div class="res-body">
+                <span class="pill pill-mint" style="font-size:9px;padding:2px 8px;">Video</span>
+                <div style="font-size:12px;font-weight:500;color:rgba(255,255,255,0.85);margin-top:5px;line-height:1.3;" class="lang-text" data-en="Sleep Better Tonight" data-ta="இன்றிரவு நன்றாக தூங்குங்கள்">Sleep Better Tonight</div>
+                <div style="font-size:10px;color:rgba(255,255,255,0.35);margin-top:3px;">8 min video</div>
+                <button onclick="toggleBookmark(this)" style="background:none;border:none;cursor:pointer;font-size:14px;padding:4px 0;display:block;">🔖</button>
+              </div>
+            </div>
+          </div>
+          <!-- Full-width card -->
+          <div class="glass-card" style="padding:14px;display:flex;align-items:center;gap:12px;margin-bottom:10px;animation:card-float 4s ease-in-out 1s infinite;cursor:pointer;">
+            <div style="width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,rgba(125,211,252,0.2),rgba(56,189,248,0.1));display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">🎧</div>
+            <div style="flex:1;">
+              <div style="font-size:13px;font-weight:500;color:rgba(255,255,255,0.85);" class="lang-text" data-en="Mindful Study Playlist" data-ta="கவனமுள்ள படிப்பு பாடல்கள்">Mindful Study Playlist</div>
+              <div style="font-size:11px;color:rgba(255,255,255,0.4);">12 tracks · <span class="lang-text" data-en="Focus music" data-ta="கவன இசை">Focus music</span></div>
+            </div>
+            <span class="pill pill-sky" style="font-size:9px;">▶</span>
+          </div>
+          <div class="glass-card" style="padding:14px;display:flex;align-items:center;gap:12px;cursor:pointer;">
+            <div style="width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,rgba(251,207,232,0.2),rgba(244,114,182,0.1));display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">💪</div>
+            <div style="flex:1;">
+              <div style="font-size:13px;font-weight:500;color:rgba(255,255,255,0.85);" class="lang-text" data-en="Building Resilience Guide" data-ta="தட்டுப்பாடு திறன் வளர்க்க">Building Resilience Guide</div>
+              <div style="font-size:11px;color:rgba(255,255,255,0.4);">10 min · <span class="lang-text" data-en="Interactive" data-ta="ஊடாடும்">Interactive</span></div>
+            </div>
+            <span class="pill pill-blush" style="font-size:9px;background:rgba(251,207,232,0.15);color:#F9A8D4;">→</span>
+          </div>
+        </div>
+        <div class="bottom-nav">
+          <div class="nav-item" onclick="setScreen('home')"><span class="nav-icon">🏠</span><span class="nav-label">Home</span></div>
+          <div class="nav-item" onclick="setScreen('chat')"><span class="nav-icon">💬</span><span class="nav-label">Chat</span></div>
+          <div class="nav-item"><div class="fab" onclick="openQuote()">🤍</div></div>
+          <div class="nav-item" onclick="setScreen('resources')"><span class="nav-icon">📚</span><span class="nav-label">Resources</span></div>
+          <div class="nav-item" onclick="setScreen('profile')"><span class="nav-icon">👤</span><span class="nav-label">Profile</span></div>
+        </div>
+      </div>
+
+      <!-- ══════════════ NOTIFICATIONS ══════════════ -->
+      <div id="s-notifs" class="screen grad-notifs" style="display:none;">
+        <div class="px content-z" style="padding-top:12px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+            <button class="back-btn" onclick="setScreen('home')">←</button>
+            <div class="t-title" style="font-size:15px;flex:1;" class="lang-text" data-en="Notifications" data-ta="அறிவிப்புகள்">Notifications</div>
+            <button style="background:none;border:none;cursor:pointer;font-size:12px;color:rgba(196,181,253,0.6);" class="lang-text" data-en="Mark all read" data-ta="அனைத்தும் படித்தது">Mark all read</button>
+          </div>
+          <!-- Filter tabs -->
+          <div style="display:flex;gap:5px;margin-bottom:14px;">
+            <button class="tab active" style="font-size:10px;padding:5px 10px;" class="lang-text" data-en="All" data-ta="அனைத்தும்">All</button>
+            <button class="tab" style="font-size:10px;padding:5px 10px;" class="lang-text" data-en="Counsellor" data-ta="ஆலோசகர்">Counsellor</button>
+            <button class="tab" style="font-size:10px;padding:5px 10px;" class="lang-text" data-en="Community" data-ta="சமூகம்">Community</button>
+            <button class="tab" style="font-size:10px;padding:5px 10px;" class="lang-text" data-en="System" data-ta="அமைப்பு">System</button>
+          </div>
+          <!-- Today -->
+          <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:8px;" class="lang-text" data-en="Today" data-ta="இன்று">Today</div>
+          <div class="notif-item unread" style="animation:slide-in-right 0.4s ease;">
+            <div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#5B6DF6,#7C3AED);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">🧑‍⚕️</div>
+            <div style="flex:1;">
+              <div style="font-size:12px;font-weight:500;color:rgba(255,255,255,0.85);margin-bottom:2px;" class="lang-text" data-en="Session confirmed" data-ta="அமர்வு உறுதிப்படுத்தப்பட்டது">Session confirmed</div>
+              <div style="font-size:11px;color:rgba(255,255,255,0.45);" class="lang-text" data-en="Dr. Meera confirmed your slot: Today 4PM" data-ta="டாக்டர் மீரா உங்கள் நேரத்தை உறுதிப்படுத்தினார்: இன்று 4மணி">Dr. Meera confirmed your slot: Today 4PM</div>
+              <div style="font-size:10px;color:rgba(255,255,255,0.25);margin-top:2px;">2 min ago</div>
+            </div>
+            <div class="notif-dot"></div>
+          </div>
+          <div class="notif-item unread" style="animation:slide-in-right 0.4s ease 0.1s both;">
+            <div style="width:34px;height:34px;border-radius:50%;background:rgba(110,231,183,0.15);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">💬</div>
+            <div style="flex:1;">
+              <div style="font-size:12px;font-weight:500;color:rgba(255,255,255,0.85);margin-bottom:2px;" class="lang-text" data-en="Community reply" data-ta="சமூக பதில்">Community reply</div>
+              <div style="font-size:11px;color:rgba(255,255,255,0.45);" class="lang-text" data-en="Someone replied to your anonymous post 🌿" data-ta="யாரோ உங்கள் இடுகைக்கு பதில் அளித்தார்கள் 🌿">Someone replied to your anonymous post 🌿</div>
+              <div style="font-size:10px;color:rgba(255,255,255,0.25);margin-top:2px;">1h ago</div>
+            </div>
+            <div class="notif-dot"></div>
+          </div>
+          <div class="notif-item read">
+            <div style="width:34px;height:34px;border-radius:50%;background:rgba(252,211,77,0.12);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">🔥</div>
+            <div style="flex:1;">
+              <div style="font-size:12px;font-weight:500;color:rgba(255,255,255,0.65);margin-bottom:2px;" class="lang-text" data-en="7-day streak!" data-ta="7 நாள் தொடர்!">7-day streak!</div>
+              <div style="font-size:11px;color:rgba(255,255,255,0.35);" class="lang-text" data-en="Amazing dedication! You've checked in 7 days in a row." data-ta="அற்புதமான அர்ப்பணிப்பு! 7 நாட்கள் தொடர்ந்து செய்தீர்கள்.">Amazing dedication! You've checked in 7 days in a row.</div>
+              <div style="font-size:10px;color:rgba(255,255,255,0.2);margin-top:2px;">3h ago</div>
+            </div>
+            <div class="notif-dot read"></div>
+          </div>
+          <!-- Yesterday -->
+          <div style="font-size:11px;color:rgba(255,255,255,0.3);margin:12px 0 8px;" class="lang-text" data-en="Yesterday" data-ta="நேற்று">Yesterday</div>
+          <div class="notif-item read">
+            <div style="width:34px;height:34px;border-radius:50%;background:rgba(91,109,246,0.12);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">🧠</div>
+            <div style="flex:1;">
+              <div style="font-size:12px;font-weight:500;color:rgba(255,255,255,0.65);margin-bottom:2px;" class="lang-text" data-en="Weekly check-in reminder" data-ta="வார ஆய்வு நினைவூட்டல்">Weekly check-in reminder</div>
+              <div style="font-size:11px;color:rgba(255,255,255,0.35);" class="lang-text" data-en="Time for your weekly PHQ-9 assessment." data-ta="உங்கள் வார PHQ-9 மதிப்பீட்டுக்கு நேரம் வந்தது.">Time for your weekly PHQ-9 assessment.</div>
+            </div>
+            <div class="notif-dot read"></div>
+          </div>
+          <div class="notif-item read">
+            <div style="width:34px;height:34px;border-radius:50%;background:rgba(125,211,252,0.1);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">📚</div>
+            <div style="flex:1;">
+              <div style="font-size:12px;font-weight:500;color:rgba(255,255,255,0.65);margin-bottom:2px;" class="lang-text" data-en="New resource added" data-ta="புதிய வளம் சேர்க்கப்பட்டது">New resource added</div>
+              <div style="font-size:11px;color:rgba(255,255,255,0.35);">Sleep hygiene guide (Tamil / English)</div>
+            </div>
+            <div class="notif-dot read"></div>
+          </div>
+        </div>
+        <div class="bottom-nav">
+          <div class="nav-item" onclick="setScreen('home')"><span class="nav-icon">🏠</span><span class="nav-label">Home</span></div>
+          <div class="nav-item" onclick="setScreen('chat')"><span class="nav-icon">💬</span><span class="nav-label">Chat</span></div>
+          <div class="nav-item"><div class="fab" onclick="openQuote()">🤍</div></div>
+          <div class="nav-item" onclick="setScreen('assesshub')"><span class="nav-icon">📋</span><span class="nav-label">Assess</span></div>
+          <div class="nav-item" onclick="setScreen('profile')"><span class="nav-icon">👤</span><span class="nav-label">Profile</span></div>
+        </div>
+      </div>
+
+      <!-- ══════════════ MODERATION QUEUE ══════════════ -->
+      <div id="s-modq" class="screen grad-modq" style="display:none;">
+        <div class="px content-z" style="padding-top:12px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+            <div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,rgba(252,211,77,0.3),rgba(245,158,11,0.2));display:flex;align-items:center;justify-content:center;font-size:15px;">🛡️</div>
+            <div class="t-title" style="font-size:15px;flex:1;" class="lang-text" data-en="Moderation Queue" data-ta="மிதமாக்கல் வரிசை">Moderation Queue</div>
+            <span class="pill pill-red" style="font-size:10px;">3 urgent</span>
+          </div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-bottom:14px;" class="lang-text" data-en="All user identities are anonymised. Review flagged content below." data-ta="அனைத்து பயனர் அடையாளங்களும் மறைக்கப்பட்டுள்ளன.">All user identities are anonymised. Review flagged content below.</div>
+
+          <!-- Filter -->
+          <div style="display:flex;gap:5px;margin-bottom:14px;">
+            <button class="tab active" style="font-size:10px;padding:4px 10px;">All (8)</button>
+            <button class="tab" style="font-size:10px;padding:4px 10px;border-color:rgba(239,68,68,0.3);color:#FCA5A5;">Urgent (3)</button>
+            <button class="tab" style="font-size:10px;padding:4px 10px;border-color:rgba(252,211,77,0.3);color:#FCD34D;">Medium (3)</button>
+            <button class="tab" style="font-size:10px;padding:4px 10px;">Low (2)</button>
+          </div>
+
+          <!-- Queue items -->
+          <div class="modq-item urgent">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px;">
+              <div style="display:flex;align-items:center;gap:7px;">
+                <span class="pill pill-red" style="font-size:9px;">🔴 Urgent</span>
+                <span style="font-size:10px;color:rgba(255,255,255,0.3);">#FP-2847 · 5min ago</span>
+              </div>
+              <span style="font-size:10px;color:rgba(255,255,255,0.3);" class="lang-text" data-en="Forum post" data-ta="மன்றம் இடுகை">Forum post</span>
+            </div>
+            <div style="background:rgba(239,68,68,0.08);border:0.5px solid rgba(239,68,68,0.15);border-radius:10px;padding:10px;margin-bottom:8px;">
+              <div style="font-size:12px;color:rgba(255,255,255,0.6);line-height:1.5;" class="lang-text" data-en="Flagged content: Possible self-harm mention detected by AI filter. Requires human review." data-ta="கொடியிடப்பட்ட உள்ளடக்கம்: AI வடிகட்டி சாத்தியமான சுய-தீங்கு குறிப்பை கண்டறிந்தது.">Flagged content: Possible self-harm mention detected by AI filter. Requires human review.</div>
+            </div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.25);margin-bottom:8px;" class="lang-text" data-en="AI confidence: 87% · Category: Crisis risk" data-ta="AI நம்பிக்கை: 87% · வகை: நெருக்கடி அபாயம்">AI confidence: 87% · Category: Crisis risk</div>
+            <div style="display:flex;gap:6px;">
+              <button class="btn-sm btn-escalate" onclick="modAction(this,'escalate')" class="lang-text" data-en="🚨 Escalate" data-ta="🚨 தீவிரப்படுத்து">🚨 Escalate</button>
+              <button class="btn-sm btn-reject" onclick="modAction(this,'remove')" class="lang-text" data-en="🗑 Remove" data-ta="🗑 நீக்கு">🗑 Remove</button>
+              <button class="btn-sm btn-approve" onclick="modAction(this,'approve')" class="lang-text" data-en="✓ Safe" data-ta="✓ பாதுகாப்பு">✓ Safe</button>
+            </div>
+          </div>
+
+          <div class="modq-item medium">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px;">
+              <div style="display:flex;align-items:center;gap:7px;">
+                <span class="pill pill-amber" style="font-size:9px;">🟡 Medium</span>
+                <span style="font-size:10px;color:rgba(255,255,255,0.3);">#FP-2841 · 22min ago</span>
+              </div>
+              <span style="font-size:10px;color:rgba(255,255,255,0.3);">Community reply</span>
+            </div>
+            <div style="background:rgba(252,211,77,0.06);border:0.5px solid rgba(252,211,77,0.12);border-radius:10px;padding:10px;margin-bottom:8px;">
+              <div style="font-size:12px;color:rgba(255,255,255,0.6);line-height:1.5;" class="lang-text" data-en="Potentially harmful advice flagged: Suggesting medication without professional guidance." data-ta="தீங்கான ஆலோசனை கண்டறியப்பட்டது: நிபுணர் வழிகாட்டுதல் இல்லாமல் மருந்து பரிந்துரை.">Potentially harmful advice flagged: Suggesting medication without professional guidance.</div>
+            </div>
+            <div style="display:flex;gap:6px;">
+              <button class="btn-sm btn-escalate" onclick="modAction(this,'escalate')">🚨 Escalate</button>
+              <button class="btn-sm btn-reject" onclick="modAction(this,'remove')">🗑 Remove</button>
+              <button class="btn-sm btn-approve" onclick="modAction(this,'approve')">✓ Safe</button>
+            </div>
+          </div>
+
+          <div class="modq-item" style="opacity:0.8;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px;">
+              <div style="display:flex;align-items:center;gap:7px;">
+                <span class="pill pill-gray" style="font-size:9px;">⚪ Low</span>
+                <span style="font-size:10px;color:rgba(255,255,255,0.3);">#FP-2838 · 1h ago</span>
+              </div>
+            </div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.5;margin-bottom:8px;" class="lang-text" data-en="Possible spam: Repeated posting of similar content across 3 threads." data-ta="சாத்தியமான ஸ்பாம்: 3 பகுதிகளில் ஒரே மாதிரியான இடுகைகள்.">Possible spam: Repeated posting of similar content across 3 threads.</div>
+            <div style="display:flex;gap:6px;">
+              <button class="btn-sm btn-reject" onclick="modAction(this,'remove')">🗑 Remove</button>
+              <button class="btn-sm btn-approve" onclick="modAction(this,'approve')">✓ Dismiss</button>
+            </div>
+          </div>
+
+          <div style="background:rgba(91,109,246,0.07);border:0.5px solid rgba(91,109,246,0.18);border-radius:12px;padding:10px 12px;font-size:11px;color:rgba(196,181,253,0.5);display:flex;gap:7px;align-items:center;">
+            <span>🤖</span><span class="lang-text" data-en="AI pre-screens all content. Human moderators review flagged items." data-ta="AI அனைத்து உள்ளடக்கத்தையும் முன் சோதிக்கிறது.">AI pre-screens all content. Human moderators review flagged items.</span>
+          </div>
+        </div>
+        <div class="bottom-nav">
+          <div class="nav-item" onclick="setScreen('home')"><span class="nav-icon">🏠</span><span class="nav-label">Home</span></div>
+          <div class="nav-item" onclick="setScreen('chat')"><span class="nav-icon">💬</span><span class="nav-label">Chat</span></div>
+          <div class="nav-item"><div class="fab" onclick="openQuote()">🤍</div></div>
+          <div class="nav-item" onclick="setScreen('assesshub')"><span class="nav-icon">📋</span><span class="nav-label">Assess</span></div>
+          <div class="nav-item" onclick="setScreen('profile')"><span class="nav-icon">👤</span><span class="nav-label">Profile</span></div>
+        </div>
+      </div>
+
+      <!-- ══════════════ USER DETAILS (Post-Signup Onboarding) ══════════════ -->
+      <div id="s-userdetails" class="screen grad-onboard" style="display:none;">
+        <div class="px content-z" style="padding-top:32px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+            <button class="back-btn" onclick="udBack()">←</button>
+          </div>
+          <div style="text-align:center;margin-bottom:14px;">
+            <div style="font-size:11px;color:rgba(196,181,253,0.5);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;">Step <span id="ud-step-label">1</span> of 5</div>
+            <div class="onb-step-dots">
+              <div class="onb-dot active" id="ud-dot-0"></div>
+              <div class="onb-dot" id="ud-dot-1"></div>
+              <div class="onb-dot" id="ud-dot-2"></div>
+              <div class="onb-dot" id="ud-dot-3"></div>
+              <div class="onb-dot" id="ud-dot-4"></div>
+            </div>
+            <div style="font-family:'DM Serif Display',serif;font-size:22px;color:#fff;margin-bottom:4px;" id="ud-title">Tell us about yourself</div>
+            <div style="font-size:12px;color:rgba(196,181,253,0.5);margin-bottom:18px;" id="ud-subtitle">So we can personalize your experience 🌱</div>
+          </div>
+          <!-- Step 0: Name + Age -->
+          <div id="ud-panel-0" class="step-panel">
+            <label class="onb-label">Full Name</label>
+            <input class="onb-input" id="ud-name" type="text" placeholder="e.g. Priya Meenakshi" autocomplete="off"/>
+            <div class="onb-error" id="err-name">Please enter your name</div>
+            <label class="onb-label">Age</label>
+            <input class="onb-input" id="ud-age" type="number" placeholder="e.g. 21" min="13" max="99"/>
+            <div class="onb-error" id="err-age">Age must be between 13 and 99</div>
+          </div>
+          <!-- Step 1: Phone + Gender -->
+          <div id="ud-panel-1" class="step-panel" style="display:none;">
+            <label class="onb-label">Phone Number <span style="color:rgba(255,255,255,0.3);font-weight:400;">(optional)</span></label>
+            <input class="onb-input" id="ud-phone" type="tel" placeholder="+91 98765 43210"/>
+            <div class="onb-error" id="err-phone">Enter a valid 10-digit number</div>
+            <label class="onb-label">Gender <span style="color:rgba(255,255,255,0.3);font-weight:400;">(optional)</span></label>
+            <div class="gender-row">
+              <div class="gender-chip" onclick="selectGender(this,'Male')">♂ Male</div>
+              <div class="gender-chip" onclick="selectGender(this,'Female')">♀ Female</div>
+              <div class="gender-chip" onclick="selectGender(this,'Non-binary')">⚧ Non-binary</div>
+              <div class="gender-chip" onclick="selectGender(this,'Prefer not')">🔒 Prefer not to say</div>
+            </div>
+          </div>
+          <!-- Step 2: Email -->
+          <div id="ud-panel-2" class="step-panel" style="display:none;">
+            <div style="font-size:24px;text-align:center;margin-bottom:10px;">📧</div>
+            <div style="font-size:14px;font-weight:500;color:rgba(255,255,255,0.85);text-align:center;margin-bottom:6px;">Your Email Address</div>
+            <div style="font-size:12px;color:rgba(196,181,253,0.5);text-align:center;margin-bottom:16px;">We'll send a verification code to this email</div>
+            <label class="onb-label">Email Address</label>
+            <input class="onb-input" id="ud-email" type="email" placeholder="you@college.edu" autocomplete="email"/>
+            <div class="onb-error" id="err-email">Please enter a valid email address</div>
+          </div>
+
+          <!-- Step 3: OTP Verification -->
+          <div id="ud-panel-3" class="step-panel" style="display:none;">
+            <div style="font-size:24px;text-align:center;margin-bottom:10px;">🔐</div>
+            <div style="font-size:14px;font-weight:500;color:rgba(255,255,255,0.85);text-align:center;margin-bottom:4px;">Verify Your Email</div>
+            <div style="font-size:12px;color:rgba(196,181,253,0.5);text-align:center;margin-bottom:16px;" id="otp-sent-msg">We sent a 6-digit code to <span id="otp-email-display" style="color:rgba(196,181,253,0.9);">your email</span></div>
+            <label class="onb-label">Enter 6-digit OTP</label>
+            <div style="display:flex;gap:8px;margin-bottom:10px;">
+              <input class="onb-input" id="otp-1" type="number" maxlength="1" style="text-align:center;font-size:20px;font-weight:600;padding:10px 4px;flex:1;" oninput="otpShift(this,'otp-2')" min="0" max="9"/>
+              <input class="onb-input" id="otp-2" type="number" maxlength="1" style="text-align:center;font-size:20px;font-weight:600;padding:10px 4px;flex:1;" oninput="otpShift(this,'otp-3')" min="0" max="9"/>
+              <input class="onb-input" id="otp-3" type="number" maxlength="1" style="text-align:center;font-size:20px;font-weight:600;padding:10px 4px;flex:1;" oninput="otpShift(this,'otp-4')" min="0" max="9"/>
+              <input class="onb-input" id="otp-4" type="number" maxlength="1" style="text-align:center;font-size:20px;font-weight:600;padding:10px 4px;flex:1;" oninput="otpShift(this,'otp-5')" min="0" max="9"/>
+              <input class="onb-input" id="otp-5" type="number" maxlength="1" style="text-align:center;font-size:20px;font-weight:600;padding:10px 4px;flex:1;" oninput="otpShift(this,'otp-6')" min="0" max="9"/>
+              <input class="onb-input" id="otp-6" type="number" maxlength="1" style="text-align:center;font-size:20px;font-weight:600;padding:10px 4px;flex:1;" min="0" max="9"/>
+            </div>
+            <div class="onb-error" id="err-otp">Invalid OTP. Try 123456 for demo.</div>
+            <div style="background:rgba(91,109,246,0.08);border:0.5px solid rgba(91,109,246,0.18);border-radius:12px;padding:10px 12px;font-size:11px;color:rgba(196,181,253,0.6);margin-top:4px;margin-bottom:4px;">
+              💡 <strong>Demo:</strong> Enter <span style="color:#C4B5FD;font-weight:600;letter-spacing:2px;">123456</span> to simulate verification
+            </div>
+            <button style="background:none;border:none;color:rgba(196,181,253,0.5);font-family:var(--mb-font);font-size:11px;cursor:pointer;margin-top:6px;" onclick="resendOtp()">↺ Resend code</button>
+          </div>
+
+          <!-- Step 4: Set Password -->
+          <div id="ud-panel-4" class="step-panel" style="display:none;">
+            <div style="font-size:24px;text-align:center;margin-bottom:10px;">🔒</div>
+            <div style="font-size:14px;font-weight:500;color:rgba(255,255,255,0.85);text-align:center;margin-bottom:6px;">Set Your Password</div>
+            <div style="font-size:12px;color:rgba(196,181,253,0.5);text-align:center;margin-bottom:16px;">Create a secure password for your account</div>
+            <label class="onb-label">Password</label>
+            <div style="position:relative;margin-bottom:10px;">
+              <input class="onb-input" id="ud-password" type="password" placeholder="Min. 8 characters" style="margin-bottom:0;padding-right:44px;"/>
+              <button onclick="togglePwVis('ud-password',this)" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:14px;color:rgba(255,255,255,0.4);">👁</button>
+            </div>
+            <div class="onb-error" id="err-password">Password must be at least 8 characters</div>
+            <label class="onb-label">Confirm Password</label>
+            <div style="position:relative;margin-bottom:10px;">
+              <input class="onb-input" id="ud-password2" type="password" placeholder="Re-enter password" style="margin-bottom:0;padding-right:44px;"/>
+              <button onclick="togglePwVis('ud-password2',this)" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:14px;color:rgba(255,255,255,0.4);">👁</button>
+            </div>
+            <div class="onb-error" id="err-password2">Passwords do not match</div>
+            <!-- Password strength -->
+            <div style="margin-top:4px;" id="pw-strength-wrap" style="display:none;">
+              <div style="display:flex;gap:4px;margin-bottom:4px;">
+                <div id="ps-1" style="flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,0.1);transition:background 0.3s;"></div>
+                <div id="ps-2" style="flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,0.1);transition:background 0.3s;"></div>
+                <div id="ps-3" style="flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,0.1);transition:background 0.3s;"></div>
+                <div id="ps-4" style="flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,0.1);transition:background 0.3s;"></div>
+              </div>
+              <div style="font-size:10px;color:rgba(255,255,255,0.35);" id="pw-strength-label">Strength: —</div>
+            </div>
+          </div>
+
+          <!-- Step 5 (was 2): Language -->
+          <div id="ud-panel-5" class="step-panel" style="display:none;">
+            <div style="font-size:24px;text-align:center;margin-bottom:10px;">🌐</div>
+            <div style="font-size:14px;font-weight:500;color:rgba(255,255,255,0.85);text-align:center;margin-bottom:6px;">Preferred Language</div>
+            <div style="font-size:12px;color:rgba(196,181,253,0.5);text-align:center;margin-bottom:16px;">You can change this anytime in settings</div>
+            <div class="lang-choice-row">
+              <div class="lang-choice selected" id="lc-en" onclick="selectLangChoice('en')">🇬🇧 English</div>
+              <div class="lang-choice" id="lc-ta" onclick="selectLangChoice('ta')">🇮🇳 தமிழ்</div>
+            </div>
+            <div style="background:rgba(110,231,183,0.07);border:0.5px solid rgba(110,231,183,0.15);border-radius:14px;padding:12px;margin-top:12px;">
+              <div style="font-size:12px;color:rgba(110,231,183,0.8);line-height:1.5;">🌿 Your data stays private. We use this to personalize your experience — never for ads.</div>
+            </div>
+          </div>
+
+          <button class="btn-primary" style="width:100%;margin-top:14px;" onclick="udNext()" id="ud-next-btn">Continue →</button>
+          <button class="btn-skip" onclick="setScreen('home')" id="ud-skip-link">Skip for now</button>
+        </div>
+        <div class="bottom-nav">
+          <div class="nav-item active"><span class="nav-icon">🏠</span><span class="nav-label">Home</span></div>
+          <div class="nav-item"><span class="nav-icon">💬</span><span class="nav-label">Chat</span></div>
+          <div class="nav-item"><div class="fab" onclick="openQuote()">🤍</div></div>
+          <div class="nav-item" onclick="setScreen('assesshub')"><span class="nav-icon">📋</span><span class="nav-label">Assess</span></div>
+          <div class="nav-item" onclick="setScreen('profile')"><span class="nav-icon">👤</span><span class="nav-label">Profile</span></div>
+        </div>
+      </div>
+
+      <!-- ══════════════ EDIT PROFILE ══════════════ -->
+      <div id="s-editprofile" class="screen grad-home-dark" style="display:none;">
+        <div class="px content-z" style="padding-top:14px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
+            <button class="back-btn" onclick="setScreen('profile')">←</button>
+            <div class="t-title" style="font-size:15px;flex:1;">Edit Profile</div>
+            <span class="pill pill-violet" style="font-size:10px;">🔒 Private</span>
+          </div>
+          <div style="text-align:center;margin-bottom:20px;">
+            <div class="edit-avatar-ring">
+              <div id="ep-avatar" style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#5B6DF6,#7C3AED);display:flex;align-items:center;justify-content:center;font-size:30px;border:3px solid rgba(196,181,253,0.25);margin:0 auto;">🌸</div>
+              <div class="edit-avatar-badge" onclick="cycleAvatar()" style="position:absolute;bottom:2px;right:calc(50% - 36px - 11px);">✏️</div>
+            </div>
+            <div style="font-size:11px;color:rgba(196,181,253,0.4);margin-top:7px;">Choose avatar</div>
+            <div style="display:flex;gap:8px;justify-content:center;margin-top:8px;">
+              <div onclick="setAvatar('🌸')" style="font-size:20px;cursor:pointer;padding:5px;border-radius:8px;background:rgba(255,255,255,0.06);">🌸</div>
+              <div onclick="setAvatar('🌿')" style="font-size:20px;cursor:pointer;padding:5px;border-radius:8px;background:rgba(255,255,255,0.06);">🌿</div>
+              <div onclick="setAvatar('🌊')" style="font-size:20px;cursor:pointer;padding:5px;border-radius:8px;background:rgba(255,255,255,0.06);">🌊</div>
+              <div onclick="setAvatar('⭐')" style="font-size:20px;cursor:pointer;padding:5px;border-radius:8px;background:rgba(255,255,255,0.06);">⭐</div>
+              <div onclick="setAvatar('🦋')" style="font-size:20px;cursor:pointer;padding:5px;border-radius:8px;background:rgba(255,255,255,0.06);">🦋</div>
+              <div onclick="setAvatar('🌻')" style="font-size:20px;cursor:pointer;padding:5px;border-radius:8px;background:rgba(255,255,255,0.06);">🌻</div>
+            </div>
+          </div>
+          <div class="glass-card" style="padding:14px;margin-bottom:12px;">
+            <label class="onb-label" style="color:rgba(196,181,253,0.6);">Full Name</label>
+            <input class="onb-input" id="ep-name" value="Priya M." style="margin-bottom:12px;"/>
+            <label class="onb-label" style="color:rgba(196,181,253,0.6);">Age</label>
+            <input class="onb-input" id="ep-age" type="number" value="21" min="13" max="99" style="margin-bottom:12px;"/>
+            <label class="onb-label" style="color:rgba(196,181,253,0.6);">Phone Number</label>
+            <input class="onb-input" id="ep-phone" type="tel" value="+91 98765 43210"/>
+          </div>
+          <div style="background:rgba(255,255,255,0.04);border:0.5px solid rgba(196,181,253,0.08);border-radius:14px;padding:10px 12px;font-size:11px;color:rgba(196,181,253,0.4);margin-bottom:14px;display:flex;gap:7px;align-items:center;">
+            <span>🔒</span> Your information is encrypted and never shared without consent.
+          </div>
+          <button class="btn-primary" style="width:100%;" id="ep-save-btn" onclick="saveProfile()">Save Changes</button>
+          <div class="save-confirm" id="ep-confirm">✓ Saved successfully!</div>
+        </div>
+        <div class="bottom-nav">
+          <div class="nav-item" onclick="setScreen('home')"><span class="nav-icon">🏠</span><span class="nav-label">Home</span></div>
+          <div class="nav-item" onclick="setScreen('chat')"><span class="nav-icon">💬</span><span class="nav-label">Chat</span></div>
+          <div class="nav-item"><div class="fab" onclick="openQuote()">🤍</div></div>
+          <div class="nav-item" onclick="setScreen('assesshub')"><span class="nav-icon">📋</span><span class="nav-label">Assess</span></div>
+          <div class="nav-item active" onclick="setScreen('profile')"><span class="nav-icon">👤</span><span class="nav-label">Profile</span></div>
+        </div>
+      </div>
+
+      <!-- ══════════════ ASSESSMENT HUB ══════════════ -->
+      <div id="s-assesshub" class="screen grad-assess" style="display:none;">
+        <div class="px content-z" style="padding-top:14px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+            <button class="back-btn" onclick="setScreen('home')">←</button>
+            <div class="t-title" style="font-size:17px;flex:1;">Assessments 📋</div>
+          </div>
+          <div style="font-size:11px;color:rgba(196,181,253,0.5);margin-bottom:14px;">Understand your wellness with validated screening tools</div>
+          <!-- Streak -->
+          <div class="glass-card" style="padding:12px 14px;margin-bottom:12px;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+              <span class="streak-fire">🔥</span>
+              <div style="flex:1;"><div style="font-size:12px;font-weight:500;color:#FCD34D;">7-Day Check-in Streak</div><div style="font-size:10px;color:rgba(255,255,255,0.35);">Keep it going — you're doing great!</div></div>
+              <span class="pill pill-amber" style="font-size:10px;">🏅 +20 pts</span>
+            </div>
+            <div class="streak-days">
+              <div class="streak-day done">M</div><div class="streak-day done">T</div><div class="streak-day done">W</div>
+              <div class="streak-day done">T</div><div class="streak-day done">F</div><div class="streak-day done">S</div>
+              <div class="streak-day today">S</div>
+            </div>
+          </div>
+          <!-- AI Recommendation -->
+          <div class="ai-reco-card" style="margin-bottom:14px;">
+            <div class="ai-reco-badge">🤖</div>
+            <div style="flex:1;"><div style="font-size:11px;font-weight:500;color:#A5B4FC;margin-bottom:3px;">AI Recommendation</div><div style="font-size:12px;color:rgba(255,255,255,0.7);line-height:1.5;">Based on your mood today (😰 Anxious), we suggest taking the GAD-7 Anxiety Assessment.</div></div>
+          </div>
+          <div style="font-size:11px;font-weight:500;color:rgba(255,255,255,0.4);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:8px;">Available Assessments</div>
+          <div class="assess-hub-card" onclick="setScreen('assess')">
+            <div class="assess-hub-icon" style="background:linear-gradient(135deg,rgba(124,58,237,0.3),rgba(91,109,246,0.2));">🧠</div>
+            <div style="flex:1;"><div style="display:flex;align-items:center;gap:6px;margin-bottom:3px;"><div style="font-size:13px;font-weight:500;color:#fff;">PHQ-9</div><span class="assess-tag done">Last: Score 8</span></div><div style="font-size:11px;color:rgba(255,255,255,0.4);">Depression screening · 9 questions · 3 min</div></div>
+            <span style="color:rgba(196,181,253,0.4);">→</span>
+          </div>
+          <div class="assess-hub-card" onclick="setScreen('assess')">
+            <div class="assess-hub-icon" style="background:linear-gradient(135deg,rgba(125,211,252,0.2),rgba(56,189,248,0.12));">💭</div>
+            <div style="flex:1;"><div style="display:flex;align-items:center;gap:6px;margin-bottom:3px;"><div style="font-size:13px;font-weight:500;color:#fff;">GAD-7</div><span class="assess-tag new">✨ Recommended</span></div><div style="font-size:11px;color:rgba(255,255,255,0.4);">Anxiety screening · 7 questions · 2 min</div></div>
+            <span style="color:rgba(196,181,253,0.4);">→</span>
+          </div>
+          <div class="assess-hub-card" onclick="setScreen('assess')">
+            <div class="assess-hub-icon" style="background:linear-gradient(135deg,rgba(110,231,183,0.18),rgba(52,211,153,0.1));">🌿</div>
+            <div style="flex:1;"><div style="display:flex;align-items:center;gap:6px;margin-bottom:3px;"><div style="font-size:13px;font-weight:500;color:#fff;">GHQ-12</div><span class="assess-tag done">Last: Score 14</span></div><div style="font-size:11px;color:rgba(255,255,255,0.4);">General health · 12 questions · 5 min</div></div>
+            <span style="color:rgba(196,181,253,0.4);">→</span>
+          </div>
+          <div class="assess-hub-card" onclick="setScreen('assess')">
+            <div class="assess-hub-icon" style="background:linear-gradient(135deg,rgba(252,211,77,0.15),rgba(245,158,11,0.08));">😴</div>
+            <div style="flex:1;"><div style="display:flex;align-items:center;gap:6px;margin-bottom:3px;"><div style="font-size:13px;font-weight:500;color:#fff;">Sleep Quality</div><span class="assess-tag new">✨ New</span></div><div style="font-size:11px;color:rgba(255,255,255,0.4);">Sleep patterns · 8 questions · 3 min</div></div>
+            <span style="color:rgba(196,181,253,0.4);">→</span>
+          </div>
+          <button class="btn-ghost" style="width:100%;margin-top:6px;" onclick="setScreen('results')">View Past Results →</button>
+        </div>
+        <div class="bottom-nav">
+          <div class="nav-item" onclick="setScreen('home')"><span class="nav-icon">🏠</span><span class="nav-label">Home</span></div>
+          <div class="nav-item" onclick="setScreen('chat')"><span class="nav-icon">💬</span><span class="nav-label">Chat</span></div>
+          <div class="nav-item"><div class="fab" onclick="openQuote()">🤍</div></div>
+          <div class="nav-item active"><span class="nav-icon">📋</span><span class="nav-label" style="color:var(--mb-indigo);">Assess</span></div>
+          <div class="nav-item" onclick="setScreen('profile')"><span class="nav-icon">👤</span><span class="nav-label">Profile</span></div>
+        </div>
+      </div>
+
+    </div><!-- /screens -->
+
+      <!-- ══ QUOTE OVERLAY (Love Button Popup) ══ -->
+      <div class="quote-overlay" id="quote-overlay" onclick="closeQuote(event)">
+        <div class="quote-card" id="quote-card">
+          <button class="quote-close" onclick="closeQuoteBtn()">×</button>
+          <span class="quote-emoji" id="quote-emoji">💜</span>
+          <div class="quote-text" id="quote-text">You are doing better than you think 💜</div>
+          <div class="quote-actions">
+            <button class="quote-btn save" onclick="saveQuote()">🔖 Save Quote</button>
+            <button class="quote-btn" onclick="shareQuote()">↗ Share</button>
+            <button class="quote-btn" onclick="nextQuote()">✨ Next</button>
+          </div>
+        </div>
+        <div class="quote-save-flash" id="quote-save-flash">Quote saved! 🌿</div>
+      </div>
+  </div><!-- /phone -->
+</div>
+
+<script>
+const SCREENS_WITH_DARK = ['onboard','login','userdetails','chat','assess','assesshub','meditate','results','crisis','faceid'];
+const GRAD_MAP = {
+  onboard:'grad-onboard',login:'grad-onboard',userdetails:'grad-onboard',chat:'grad-chat',assess:'grad-assess',assesshub:'grad-assess',
+  meditate:'grad-meditate',results:'grad-results',crisis:'grad-crisis',home:'grad-home-dark',
+  booking:'grad-home-dark',forum:'grad-home-dark',profile:'grad-home-dark',editprofile:'grad-home-dark',
+  faceid:'grad-faceid',progress:'grad-progress',resources:'grad-resources',
+  notifs:'grad-notifs',modq:'grad-modq'
+};
+const GRAD_MAP_LIGHT = {
+  onboard:'grad-onboard',login:'grad-onboard',userdetails:'grad-onboard',chat:'grad-chat',assess:'grad-assess',assesshub:'grad-assess',
+  meditate:'grad-meditate',results:'grad-results',crisis:'grad-crisis',home:'grad-home-light',
+  booking:'grad-home-light',forum:'grad-home-light',profile:'grad-home-light',editprofile:'grad-home-light',
+  faceid:'grad-faceid',progress:'grad-progress',resources:'grad-resources',
+  notifs:'grad-notifs',modq:'grad-modq'
+};
+let currentMode='dark', currentScreen='onboard', currentLang='en';
+const SCREEN_IDS=['onboard','userdetails','login','home','chat','assess','assesshub','results','booking','meditate','forum','crisis','profile','editprofile','faceid','progress','resources','notifs','modq'];
+
+function setMode(m){
+  currentMode=m;
+  document.getElementById('btn-dark').classList.toggle('active',m==='dark');
+  document.getElementById('btn-light').classList.toggle('active',m==='light');
+  const phone=document.getElementById('phone');
+  phone.className='phone '+m;
+  document.getElementById('status-bar').style.color=m==='dark'?'rgba(255,255,255,0.7)':'rgba(30,27,75,0.6)';
+  applyModeToScreen(currentScreen,m);
+}
+function applyModeToScreen(s,m){
+  const el=document.getElementById('s-'+s);
+  if(!el)return;
+  const allGrads=Object.values({...GRAD_MAP,...GRAD_MAP_LIGHT});
+  allGrads.forEach(c=>el.classList.remove(c));
+  const map=m==='dark'?GRAD_MAP:GRAD_MAP_LIGHT;
+  if(map[s])el.classList.add(map[s]);
+  el.querySelectorAll('.t-title').forEach(e=>{ e.style.color=m==='dark'?'#fff':'var(--mb-text)'; });
+  el.querySelectorAll('.back-btn').forEach(e=>{ e.style.background=m==='dark'?'rgba(255,255,255,0.08)':'rgba(91,109,246,0.08)'; e.style.color=m==='dark'?'rgba(255,255,255,0.7)':'var(--mb-indigo)'; });
+  el.querySelectorAll('.bottom-nav').forEach(nav=>{
+    if(m==='dark') nav.classList.remove('light'); else nav.classList.add('light');
+    nav.querySelectorAll('.nav-item .nav-icon,.nav-item .nav-label').forEach(n=>{
+      n.style.color=m==='dark'?'rgba(255,255,255,0.35)':'rgba(30,27,75,0.35)';
+    });
+    nav.querySelectorAll('.nav-item.active .nav-icon,.nav-item.active .nav-label').forEach(n=>{
+      n.style.color='var(--mb-indigo)';
+    });
+  });
+}
+function setScreen(s){
+  SCREEN_IDS.forEach(id=>{
+    const el=document.getElementById('s-'+id);
+    if(el) el.style.display=id===s?'block':'none';
+  });
+  currentScreen=s;
+  applyModeToScreen(s,currentMode);
+  document.querySelectorAll('.screen-btn').forEach((btn,i)=>{
+    btn.classList.toggle('active',SCREEN_IDS[i]===s);
+  });
+  if(currentLang!=='en') applyLanguage(currentLang);
+  // Subtle screen-enter animation
+  const activeEl=document.getElementById('s-'+s);
+  if(activeEl){activeEl.classList.remove('screen-enter');void activeEl.offsetWidth;activeEl.classList.add('screen-enter');}
+}
+function setLang(lang){
+  currentLang=lang;
+  document.querySelectorAll('#gl-en,#gl-ta,#prof-en,#prof-ta').forEach(b=>b.classList.remove('active'));
+  if(lang==='en'){
+    document.querySelectorAll('#gl-en,#prof-en').forEach(b=>b&&b.classList.add('active'));
+  } else {
+    document.querySelectorAll('#gl-ta,#prof-ta').forEach(b=>b&&b.classList.add('active'));
+  }
+  applyLanguage(lang);
+}
+function applyLanguage(lang){
+  document.querySelectorAll('.lang-text,[data-en]').forEach(el=>{
+    const val=lang==='ta'?el.dataset.ta:el.dataset.en;
+    if(val) el.textContent=val;
+  });
+  const phone=document.getElementById('phone');
+  if(lang==='ta'){
+    phone.classList.add('tamil-mode');
+  } else {
+    phone.classList.remove('tamil-mode');
+  }
+}
+function selectMood(el){
+  document.querySelectorAll('#s-home .mood-item, #s-onboard .mood-item').forEach(e=>e.classList.remove('selected'));
+  el.classList.add('selected');
+}
+function selectAssess(el){
+  document.querySelectorAll('#assess-options .assess-option').forEach(e=>e.classList.remove('selected'));
+  el.classList.add('selected');
+}
+function likePost(btn){
+  const countEl=btn.querySelector('.like-count');
+  const count=parseInt(countEl.textContent);
+  const isLiked=btn.dataset.liked==='1';
+  if(isLiked){countEl.textContent=count-1;btn.childNodes[0].textContent='♡ ';btn.dataset.liked='0';btn.style.color='rgba(255,255,255,0.4)';}
+  else{countEl.textContent=count+1;btn.childNodes[0].textContent='♥ ';btn.dataset.liked='1';btn.style.color='#F9A8D4';}
+}
+function toggleBookmark(btn){
+  btn.textContent=btn.textContent==='🔖'?'🔖✓':'🔖';
+  btn.style.color=btn.textContent.includes('✓')?'#C4B5FD':'';
+}
+function simulateFaceScan(){
+  const btn=document.getElementById('face-verify-btn');
+  const status=document.getElementById('face-status');
+  btn.textContent='Scanning…';
+  btn.style.opacity='0.7';
+  setTimeout(()=>{
+    status.style.background='rgba(91,109,246,0.15)';
+    status.style.borderColor='rgba(91,109,246,0.35)';
+    status.querySelector('div').style.background=currentLang==='ta'?'#A5B4FC':'#A5B4FC';
+    status.querySelector('span').textContent=currentLang==='ta'?'சரிபார்ப்பு வெற்றி ✓':'Verification successful ✓';
+    status.querySelector('span').style.color='#A5B4FC';
+    btn.textContent=currentLang==='ta'?'✓ சரிபார்க்கப்பட்டது':'✓ Verified';
+    btn.style.opacity='1';
+    btn.style.background='linear-gradient(135deg,#6EE7B7,#34D399)';
+    setTimeout(()=>setScreen('home'),1200);
+  },2000);
+}
+function setTimeRange(btn,range){
+  document.querySelectorAll('#s-progress .tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+function expandChart(card){
+  const chart=document.getElementById('wellness-chart');
+  if(chart.style.height==='120px'){
+    chart.style.height='';
+    chart.querySelectorAll('div[style*="height"]').forEach((d,i)=>{
+      const heights=['34px','40px','28px','44px','38px','52px','58px'];
+      d.style.height=heights[i]||'40px';
+    });
+    card.querySelector('[class*="lang-text"]').textContent=currentLang==='ta'?'விரிக்க தட்டவும்':'Tap to expand';
+  } else {
+    chart.style.height='120px';
+    chart.querySelectorAll('div[style*="height"]').forEach((d,i)=>{
+      const heights=['68px','80px','56px','88px','76px','104px','116px'];
+      d.style.height=heights[i]||'80px';
+    });
+    card.querySelector('[class*="lang-text"]').textContent=currentLang==='ta'?'சுருக்க தட்டவும்':'Tap to collapse';
+  }
+}
+function modAction(btn,action){
+  const item=btn.closest('.modq-item');
+  if(action==='escalate'){item.style.borderColor='rgba(239,68,68,0.5)';item.style.opacity='0.9';}
+  else{item.style.opacity='0.3';item.style.pointerEvents='none';item.style.transform='translateX(10px)';}
+}
+setScreen('onboard');
+setMode('dark');
+
+// ── Moderator role simulation ──
+let isModerator = true;
+function applyModeratorVisibility(){
+  const panel=document.getElementById('mod-admin-panel');
+  if(panel) panel.style.display=isModerator?'block':'none';
+}
+setTimeout(applyModeratorVisibility, 50);
+
+// ══ NEW FEATURE JS v3 ══
+
+// ── User Details Multi-Step Form (5 steps) ──
+let udStep = 0;
+const UD_TOTAL = 5;
+const udTitles = [
+  'Tell us about yourself',
+  'A bit more about you',
+  'Your Email Address',
+  'Verify Your Email',
+  'Set Your Password'
+];
+const udSubtitles = [
+  'So we can personalize your experience 🌱',
+  'Optional — you can skip this step',
+  'We\'ll send a 6-digit verification code',
+  'Check your inbox for the OTP',
+  'Create a secure password to protect your account'
+];
+
+function udShowStep(step){
+  for(let i=0;i<UD_TOTAL;i++){
+    const p=document.getElementById('ud-panel-'+i);
+    const pd=document.getElementById('ud-panel-'+(i+1)); // panels 0-4, extra panel-5
+    if(p) p.style.display='none';
+  }
+  // panel ids: 0,1,2,3,4 (language is panel id 5 mapped to step 4)
+  const panelId = step; // steps 0-4 map to panel-0 through panel-4; language is panel-5 but step 4
+  // actually steps: 0=name/age, 1=phone/gender, 2=email, 3=otp, 4=password, 5=language
+  // We have 5 dots (0-4) and 6 panels (0-5)
+  // Remap: show panel = step (0..5 but dots only 0..4)
+  const showPanel = document.getElementById('ud-panel-'+step);
+  if(showPanel){ showPanel.style.display='block'; showPanel.classList.remove('step-panel'); void showPanel.offsetWidth; showPanel.classList.add('step-panel'); }
+  for(let i=0;i<UD_TOTAL;i++){
+    const d=document.getElementById('ud-dot-'+i);
+    if(!d) continue;
+    d.className='onb-dot'+(i<step?'done':(i===step?'active':''));
+  }
+  // Clamp dot highlight to 0-4
+  const dotIdx=Math.min(step,UD_TOTAL-1);
+  for(let i=0;i<UD_TOTAL;i++){
+    const d=document.getElementById('ud-dot-'+i);
+    if(!d) continue;
+    d.className='onb-dot'+(i<step?'done':(i===dotIdx&&step<UD_TOTAL?'active':''));
+  }
+  document.getElementById('ud-step-label').textContent=Math.min(step+1,UD_TOTAL);
+  const titleEl=document.getElementById('ud-title');
+  const subtitleEl=document.getElementById('ud-subtitle');
+  const titles=['Tell us about yourself','A bit more about you','Your Email Address','Verify Your Email','Set Your Password','Choose Your Language'];
+  const subtitles=['So we can personalize your experience 🌱','Optional — skip if you prefer','We\'ll send a 6-digit OTP to verify','Enter the code sent to your email','Create a secure password','Set your preferred language'];
+  if(titleEl) titleEl.textContent=titles[step]||titles[titles.length-1];
+  if(subtitleEl) subtitleEl.textContent=subtitles[step]||subtitles[subtitles.length-1];
+  const btn=document.getElementById('ud-next-btn');
+  if(btn) btn.textContent=step>=5?'Get Started 🎉':'Continue →';
+  const skip=document.getElementById('ud-skip-link');
+  if(skip) skip.style.display=(step>=2)?'none':'block';
+}
+
+udStep=0;
+
+function udNext(){
+  if(udStep===0){
+    const name=document.getElementById('ud-name').value.trim();
+    const age=parseInt(document.getElementById('ud-age').value);
+    let valid=true;
+    if(!name){document.getElementById('err-name').classList.add('show');document.getElementById('ud-name').classList.add('error');valid=false;}
+    else{document.getElementById('err-name').classList.remove('show');document.getElementById('ud-name').classList.remove('error');}
+    if(!age||age<13||age>99){document.getElementById('err-age').classList.add('show');document.getElementById('ud-age').classList.add('error');valid=false;}
+    else{document.getElementById('err-age').classList.remove('show');document.getElementById('ud-age').classList.remove('error');}
+    if(!valid) return;
+  }
+  if(udStep===1){
+    const phone=document.getElementById('ud-phone').value.trim();
+    if(phone && !/^[+\d\s\-()]{7,16}$/.test(phone)){
+      document.getElementById('err-phone').classList.add('show');document.getElementById('ud-phone').classList.add('error');return;
+    } else {document.getElementById('err-phone').classList.remove('show');document.getElementById('ud-phone').classList.remove('error');}
+  }
+  if(udStep===2){
+    const email=document.getElementById('ud-email').value.trim();
+    if(!/^[^@]+@[^@]+\.[^@]+$/.test(email)){
+      document.getElementById('err-email').classList.add('show');document.getElementById('ud-email').classList.add('error');return;
+    }
+    document.getElementById('err-email').classList.remove('show');document.getElementById('ud-email').classList.remove('error');
+    const disp=document.getElementById('otp-email-display');
+    if(disp) disp.textContent=email;
+  }
+  if(udStep===3){
+    const otp=[1,2,3,4,5,6].map(n=>{ const el=document.getElementById('otp-'+n); return el?el.value:''; }).join('');
+    if(otp!=='123456'){
+      document.getElementById('err-otp').classList.add('show');return;
+    }
+    document.getElementById('err-otp').classList.remove('show');
+  }
+  if(udStep===4){
+    const pw=document.getElementById('ud-password').value;
+    const pw2=document.getElementById('ud-password2').value;
+    let valid=true;
+    if(pw.length<8){document.getElementById('err-password').classList.add('show');document.getElementById('ud-password').classList.add('error');valid=false;}
+    else{document.getElementById('err-password').classList.remove('show');document.getElementById('ud-password').classList.remove('error');}
+    if(pw!==pw2){document.getElementById('err-password2').classList.add('show');document.getElementById('ud-password2').classList.add('error');valid=false;}
+    else{document.getElementById('err-password2').classList.remove('show');document.getElementById('ud-password2').classList.remove('error');}
+    if(!valid) return;
+  }
+  if(udStep===5){
+    udStep=0; udShowStep(0); setScreen('home'); return;
+  }
+  udStep++;
+  udShowStep(udStep);
+}
+
+function udBack(){
+  if(udStep===0){ setScreen('onboard'); return; }
+  udStep--;
+  udShowStep(udStep);
+}
+
+function resetUdForm(){
+  udStep=0; udShowStep(0);
+  document.getElementById('ud-next-btn').textContent='Continue →';
+}
+
+function otpShift(el, nextId){
+  if(el.value.length>=1){
+    el.value=el.value.slice(-1);
+    const next=document.getElementById(nextId);
+    if(next) next.focus();
+  }
+}
+
+function resendOtp(){
+  [1,2,3,4,5,6].forEach(n=>{ const el=document.getElementById('otp-'+n); if(el) el.value=''; });
+  document.getElementById('err-otp').classList.remove('show');
+  const btn=event.target;
+  btn.textContent='✓ Code resent!'; btn.style.color='#6EE7B7';
+  setTimeout(()=>{btn.textContent='↺ Resend code';btn.style.color='';},3000);
+}
+
+function togglePwVis(fieldId, btn){
+  const field=document.getElementById(fieldId);
+  if(!field) return;
+  if(field.type==='password'){field.type='text';btn.textContent='🙈';}
+  else{field.type='password';btn.textContent='👁';}
+}
+
+function pwStrength(pw){
+  let score=0;
+  if(pw.length>=8) score++;
+  if(/[A-Z]/.test(pw)) score++;
+  if(/[0-9]/.test(pw)) score++;
+  if(/[^A-Za-z0-9]/.test(pw)) score++;
+  const colors=['#EF4444','#F59E0B','#FCD34D','#6EE7B7'];
+  const labels=['Weak','Fair','Good','Strong'];
+  for(let i=1;i<=4;i++){
+    const bar=document.getElementById('ps-'+i);
+    if(bar) bar.style.background=i<=score?colors[score-1]:'rgba(255,255,255,0.1)';
+  }
+  const lbl=document.getElementById('pw-strength-label');
+  if(lbl) lbl.textContent=pw.length?'Strength: '+labels[score-1]||'Weak':'Strength: —';
+}
+
+// Attach pw strength listener after DOM ready
+document.addEventListener('DOMContentLoaded',()=>{
+  const pwField=document.getElementById('ud-password');
+  if(pwField) pwField.addEventListener('input',()=>pwStrength(pwField.value));
+});
+
+function selectGender(el, val){
+  document.querySelectorAll('.gender-chip').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+}
+function selectLangChoice(lang){
+  const en=document.getElementById('lc-en'); const ta=document.getElementById('lc-ta');
+  if(en) en.classList.toggle('selected',lang==='en');
+  if(ta) ta.classList.toggle('selected',lang==='ta');
+  setLang(lang);
+}
+
+// ── Edit Profile ──
+function setAvatar(emoji){
+  document.getElementById('ep-avatar').textContent=emoji;
+  // Also update profile avatar
+  const profAvatar=document.querySelector('#s-profile .t-title + div, #s-profile [style*="border-radius:50%"]');
+}
+function cycleAvatar(){
+  const avatars=['🌸','🌿','🌊','⭐','🦋','🌻','🎭','🦋','🌈'];
+  const el=document.getElementById('ep-avatar');
+  const idx=avatars.indexOf(el.textContent);
+  el.textContent=avatars[(idx+1)%avatars.length];
+}
+function saveProfile(){
+  const btn=document.getElementById('ep-save-btn');
+  btn.style.animation='save-bounce 0.35s ease';
+  btn.textContent='Saving…';
+  setTimeout(()=>{
+    btn.style.animation='';
+    btn.textContent='Save Changes';
+    const confirm=document.getElementById('ep-confirm');
+    confirm.classList.add('show');
+    setTimeout(()=>confirm.classList.remove('show'),2500);
+  },800);
+}
+
+// ── Love Button / Quote Modal ──
+const QUOTES = [
+  {text:"You are doing better than you think 💜",emoji:"💜"},
+  {text:"It's okay to take a break 🌿",emoji:"🌿"},
+  {text:"Your feelings are valid. All of them.",emoji:"🤍"},
+  {text:"Progress, not perfection. 🌱",emoji:"🌱"},
+  {text:"You've survived 100% of your hard days.",emoji:"⭐"},
+  {text:"Rest is not giving up. It's recharging. 🌙",emoji:"🌙"},
+  {text:"Small steps still move you forward. 👣",emoji:"👣"},
+  {text:"Breathe. You are enough. Right now. 🫧",emoji:"🫧"},
+  {text:"Asking for help is a sign of strength. 💪",emoji:"💪"},
+  {text:"You deserve the same kindness you give others. 🌸",emoji:"🌸"}
+];
+let quoteIdx=0;
+function openQuote(){
+  quoteIdx=Math.floor(Math.random()*QUOTES.length);
+  showQuote();
+  const overlay=document.getElementById('quote-overlay');
+  overlay.classList.add('open');
+}
+function showQuote(){
+  const q=QUOTES[quoteIdx];
+  document.getElementById('quote-emoji').textContent=q.emoji;
+  document.getElementById('quote-text').textContent=q.text;
+  const card=document.getElementById('quote-card');
+  card.classList.remove('animating'); void card.offsetWidth; card.classList.add('animating');
+}
+function nextQuote(){
+  quoteIdx=(quoteIdx+1)%QUOTES.length;
+  showQuote();
+}
+function closeQuote(e){
+  if(e.target===document.getElementById('quote-overlay')) closeQuoteBtn();
+}
+function closeQuoteBtn(){
+  document.getElementById('quote-overlay').classList.remove('open');
+}
+function saveQuote(){
+  const flash=document.getElementById('quote-save-flash');
+  flash.classList.add('show');
+  setTimeout(()=>flash.classList.remove('show'),2000);
+}
+function shareQuote(){
+  const q=QUOTES[quoteIdx];
+  if(navigator.share){navigator.share({text:q.text+' — MindBridge',title:'A thought for you 💜'});}
+  else{navigator.clipboard&&navigator.clipboard.writeText(q.text).then(()=>saveQuote());}
+}
+</script>

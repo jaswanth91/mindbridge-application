@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+Tamil:wght@300;400;500;600&display=swap');
+
+@theme {
+  --color-mb-indigo: #5B6DF6;
+  --color-mb-violet: #7C3AED;
+  --color-mb-lavender: #C4B5FD;
+  --color-mb-sky: #7DD3FC;
+  --color-mb-mint: #6EE7B7;
+  --color-mb-blush: #FBCFE8;
+  --color-mb-soft-bg: #F3F0FF;
+  --color-mb-dark-bg: #0F0C2A;
+  --color-mb-dark-text: #E8E4FF;
+  --color-mb-dark-muted: #9B96C9;
+  --color-mb-text: #1E1B4B;
+  --color-mb-muted: #6B6F9A;
+
+  --radius-mb: 22px;
+  --radius-mb-sm: 14px;
+
+  --font-dm-sans: "DM Sans", sans-serif;
+  --font-dm-serif: "DM Serif Display", serif;
+  --font-tamil: "Noto Sans Tamil", "DM Sans", sans-serif;
+
+  --background-image-onboard: linear-gradient(160deg, #0F0C2A 0%, #1E1254 40%, #2D1B69 70%, #1a0f4f 100%);
+  --background-image-home-dark: linear-gradient(170deg, #0F0C2A 0%, #150E3A 50%, #1a1050 100%);
+  --background-image-chat: linear-gradient(170deg, #0D1B40 0%, #0F1A4A 60%, #0D1635 100%);
+
+  --blur-mb: 16px;
+}
+
+@layer base {
+  body {
+    @apply font-dm-sans bg-mb-dark-bg text-white antialiased;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/10 border border-white/20 rounded-mb backdrop-blur-mb;
+  }
+  
+  .glass-card-light {
+    @apply bg-white/80 border border-mb-violet/10 rounded-mb shadow-lg;
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-br from-mb-indigo to-mb-violet rounded-full px-8 py-3.5 text-white font-medium 
+           shadow-[0_6px_20px_rgba(91,109,246,0.4)] transition-all active:scale-95 hover:shadow-[0_8px_28px_rgba(91,109,246,0.5)] 
+           hover:-translate-y-0.5;
+  }
+
+  .btn-ghost {
+    @apply bg-white/5 border border-white/20 rounded-full px-7 py-3 text-white/80 font-normal transition-all hover:bg-white/10;
+  }
+
+  .btn-crisis {
+    @apply bg-gradient-to-br from-red-500 to-red-600 rounded-full px-9 py-4 text-white font-semibold 
+           shadow-[0_6px_24px_rgba(239,68,68,0.5)] transition-all hover:shadow-[0_8px_32px_rgba(239,68,68,0.6)];
+  }
+
+  .t-hero {
+    @apply font-dm-serif text-3xl leading-tight text-white tracking-tight;
+  }
+
+  .t-title {
+    @apply text-xl font-semibold text-white tracking-tight;
+  }
+
+  .t-body {
+    @apply text-sm font-normal text-white/60 leading-relaxed;
+  }
+
+  .input-field {
+    @apply w-full bg-white/10 border border-mb-lavender/20 rounded-mb-sm px-4 py-3 text-white outline-none 
+           placeholder:text-white/30 focus:border-mb-indigo/60 focus:ring-4 focus:ring-mb-indigo/10 transition-all;
+  }
+}
+
+/* Custom Animations */
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.18); opacity: 1; }
+}
+
+.animate-breathe {
+  animation: breathe 4s ease-in-out infinite;
+}
+
+.grad-onboard {
+  background: var(--background-image-onboard);
+}
+
+.grad-home-dark {
+  background: var(--background-image-home-dark);
+}
+
+.grad-chat {
+  background: var(--background-image-chat);
+}
+
+.pill {
+  @apply px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest;
+}
+
+.pill-violet { @apply bg-mb-violet/20 text-mb-lavender border border-mb-violet/30; }
+.pill-mint { @apply bg-mb-mint/20 text-mb-mint border border-mb-mint/30; }
+.pill-sky { @apply bg-mb-sky/20 text-mb-sky border border-mb-sky/30; }
+.pill-gray { @apply bg-white/10 text-white/40 border border-white/10; }
